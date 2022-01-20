@@ -12,4 +12,4 @@ development:
   socket: /var/run/mysqld/mysqld.sock
 production:
   <<: *default
-  database: vendor_portal_ror_production
+  database: abet_iuh_production
