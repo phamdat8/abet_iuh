@@ -1,18 +1,29 @@
-<%= form_with(model: [:admin, user], local: true) do |form| %>
+<%= form_for ([:admin, user]) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <%= pluralize(user.errors.count, "error") %> prohibited this book from being saved:
+      <ul>
+        <% user.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field form-group mt-2">
-    <label>Email</label>
+    <label>Email<span class="text-danger">*</span></label>
     <%= form.email_field :email, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>First Name</label>
+    <label>First Name<span class="text-danger">*</span></label>
     <%= form.text_field :first_name, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Last Name</label>
+    <label>Last Name<span class="text-danger">*</span></label>
     <%= form.text_field :last_name, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Lecturer Code</label>
+    <label>Lecturer Code<span class="text-danger">*</span></label>
     <%= form.text_field :code, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
@@ -20,10 +31,18 @@
     <%= form.text_field :phone, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Role</label><br/>
+    <label>Role<span class="text-danger">*</span></label><br/>
     <select name="user[role]" id="user_role" class="form-select">
       <option value="lecturer">Lecturer</option>
-      <option value="admin">Admin</option>
+      <option value="admin" <%= 'selected' if user.admin?%>>Admin</option>
+    </select>
+  </div>
+
+  <div class="field form-group mt-2">
+    <label>language<span class="text-danger">*</span></label><br/>
+    <select name="user[locale]" id="user_role" class="form-select">
+      <option value="vi">VietNam</option>
+      <option value="en" <%= 'selected' if user.locate == 'en'%>>English</option>
     </select>
   </div>
 

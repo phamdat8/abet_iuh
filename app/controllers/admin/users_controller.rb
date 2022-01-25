@@ -8,12 +8,17 @@ class Admin::UsersController < AdminController
   end
 
   def create
-    user = User.new(user_param)
-    user.password = '123456'
-    user.password_confirmation = '123456'
-    byebug
-    user.save
-    redirect_to admin_users_url 
+    @user = User.new(user_param)
+    @user.password = '123456'
+    @user.password_confirmation = '123456'
+    if @user.save
+      flash.alert = "User created successfully"
+      redirect_to admin_users_url
+    else
+      flash.notice = "Something Wrong"
+      render 'new'
+    end
+    
   end
 
   def edit
@@ -22,15 +27,26 @@ class Admin::UsersController < AdminController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_param)
-    @user = User.find(params[:id])
-    render 'edit'
+    byebug
+    if @user.update(user_param)
+      flash.alert = "Update user successfully"
+      redirect_to admin_users_url
+    else
+      flash.notice = "Something Wrong"
+      render 'edit'
+    end
+    
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_url
+    flash.alert = "User was successfully destroyed!"
   end
 
 
