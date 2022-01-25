@@ -21,10 +21,18 @@ class Admin::UsersController < AdminController
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_param)
+    @user = User.find(params[:id])
+    render 'edit'
+  end
+
+  def show
   end
 
   def destroy
   end
+
 
   def user_param
     params.require(:user).permit(:email, :first_name, :last_name, :phone, :role, :code)
