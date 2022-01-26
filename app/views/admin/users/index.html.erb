@@ -1,15 +1,15 @@
 <div class='p-5'>
-  <h3>User > List</h3>
+  <h3><%= I18n.t('user.users') %> > <%= I18n.t('list') %></h3>
   <hr/>
   <a href='/admin/users/new'><button class='btn btn-outline-success'>+</button></a>
   <table class="table caption-top">
     <thead>
       <tr>
-        <th scope="col">No</th>
-        <th scope="col">Full name</th>
+        <th scope="col"><%= I18n.t('no_') %></th>
+        <th scope="col"><%= I18n.t('full_name') %></th>
         <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Role</th>
+        <th scope="col"><%= I18n.t('phone') %></th>
+        <th scope="col"><%= I18n.t('role') %></th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -17,7 +17,7 @@
       <% @users.each do |user| %>
         <tr>
           <th scope="row"><%= user.id %></th>
-          <th><%= user.first_name.to_s + ' ' + user.last_name.to_s %></th>
+          <th><%= user.full_name %></th>
           <td><%= user.email %></td>
           <td><%= user.phone %></td>
           <td><%= user.role %></td>

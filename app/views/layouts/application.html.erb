@@ -29,8 +29,8 @@
     </div>
     <nav id="flash" class="navbar navbar-light fixed-bottom d-flex justify-content-end">
       <% flash.each do |key, value| %>
-        <%key = 'success' if key == 'alert'%>
-        <%key = 'primary' if key == 'notice'%>
+        <%key = 'success' if key == 'notice'%>
+        <%key = 'primary' if key == 'alert'%>
         <div class="mx-3 alert alert-<%= key %>">
           <%= sanitize(value) %>
         </div>

@@ -15,23 +15,23 @@
     <%= form.email_field :email, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>First Name<span class="text-danger">*</span></label>
+    <label><%=I18n.t('first_name')%><span class="text-danger">*</span></label>
     <%= form.text_field :first_name, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Last Name<span class="text-danger">*</span></label>
+    <label><%=I18n.t('last_name')%><span class="text-danger">*</span></label>
     <%= form.text_field :last_name, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Lecturer Code<span class="text-danger">*</span></label>
+    <label><%=I18n.t('lecturer_code')%><span class="text-danger">*</span></label>
     <%= form.text_field :code, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Phone</label>
+    <label><%=I18n.t('phone')%></label>
     <%= form.text_field :phone, class:"form-control" %>
   </div>
   <div class="field form-group mt-2">
-    <label>Role<span class="text-danger">*</span></label><br/>
+    <label><%=I18n.t('role')%><span class="text-danger">*</span></label><br/>
     <select name="user[role]" id="user_role" class="form-select">
       <option value="lecturer">Lecturer</option>
       <option value="admin" <%= 'selected' if user.admin?%>>Admin</option>
@@ -39,10 +39,10 @@
   </div>
 
   <div class="field form-group mt-2">
-    <label>language<span class="text-danger">*</span></label><br/>
+    <label><%=I18n.t('language')%><span class="text-danger">*</span></label><br/>
     <select name="user[locale]" id="user_role" class="form-select">
-      <option value="vi">VietNam</option>
-      <option value="en" <%= 'selected' if user.locate == 'en'%>>English</option>
+      <option value="vi"><%=I18n.t('vietnamese')%></option>
+      <option value="en" <%= 'selected' if user.locale == 'en'%>><%=I18n.t('english')%></option>
     </select>
   </div>
 

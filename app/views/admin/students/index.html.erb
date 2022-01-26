@@ -1,0 +1,33 @@
+<div class='p-5'>
+  <h3><%= I18n.t('students') %> > <%= I18n.t('list') %></h3>
+  <hr/>
+  <a href='/admin/students/new'><button class='btn btn-outline-success'>+</button></a>
+  <table class="table caption-top">
+    <thead>
+      <tr>
+        <th scope="col"><%= I18n.t('no_') %></th>
+        <th scope="col"><%= I18n.t('full_name') %></th>
+        <th scope="col"><%= I18n.t('student_code') %></th>
+        <th scope="col"><%= I18n.t('original_class_code') %></th>
+        <th scope="col"><%= I18n.t('birth_day') %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <th scope="row"><%= student.id %></th>
+          <th><%= student.full_name %></th>
+          <td><%= student.code %></td>
+          <td><%= student.original_class.code %></td>
+          <td><%= student.birthday %></td>
+          <td class="d-flex justify-content-end">
+            <a href='/admin/students/<%=student.id%>'><i class="mx-1 fas fa-angle-double-right"></i></a>
+            <a href='/admin/students/<%=student.id%>/edit'><i class="mx-1 far fa-edit"></i></a>
+            <a href='/admin/students/<%=student.id%>' data-method="DELETE" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i class="mx-1 fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

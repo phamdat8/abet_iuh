@@ -1,35 +1,47 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
   user:
     users: "Users"
+    created: 'Create user successfully'
+    deleted: 'Delete user successfully'
+    edited: 'Edit user successfully'
+    updated: 'Update user successfully'
+  subjects: 'Subjects'
+  subject:
+    created: 'Create subject successfully'
+    deleted: 'Delete subject successfully'
+    edited: 'Edit subject successfully'
+    updated: 'Update subject successfully'
+    name: 'Subject name'
+  manager: "MANGER"
+  logout: 'Log out'
+  login: 'Login'
+  list: 'List'
+  no_: 'No'
+  new: 'New'
+  edit: 'Edit'
+  back: 'Back'
+  submit: 'Submit'
+  full_name: 'Full name'
+  first_name: 'First Name'
+  last_name: 'Last Name'
+  lecturer_code: 'Lecturer Code'
+  language: 'Language'
+  vietnamese: 'Vietnamese'
+  english: 'English'
+  role: 'Role'
+  phone: 'Phone'
+  wrong: 'Something wrong'
+  show: 'Show'
+  original_classes: 'Original class'
+  original_class:
+    name: 'name'
+    code: 'code'
+  students: 'Students'
+  student_code: 'Student code'
+  original_class_code: 'Original class code'
+  birth_day: 'Birth day'
+  student: 
+    created: 'Create student successfully'
+    deleted: 'Delete student successfully'
+    edited: 'Edit student successfully'
+    updated: 'Update student successfully'

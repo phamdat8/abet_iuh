@@ -1,0 +1,20 @@
+<%= form_for ([:admin, subject]) do |form| %>
+  <% if subject.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% subject.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('subject.name')%><span class="text-danger">*</span></label>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="actions mt-2">
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="/admin/subjects"><button type="submit" class="btn btn-primary">Back</button></a>
+  </div>
+<% end %>

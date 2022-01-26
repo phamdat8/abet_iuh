@@ -1,0 +1,26 @@
+<%= form_for ([:admin, original_class]) do |form| %>
+  <% if original_class.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% original_class.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('original_class.name')%><span class="text-danger">*</span></label>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('original_class.code')%><span class="text-danger">*</span></label>
+    <%= form.text_field :code, class:"form-control" %>
+  </div>
+
+  <div class="actions mt-2">
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="/admin/original_classes"><button type="submit" class="btn btn-primary">Back</button></a>
+  </div>
+<% end %>
+
