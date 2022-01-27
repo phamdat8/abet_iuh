@@ -1,15 +1,15 @@
 default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  database: abet_iuh
-  host: 103.124.94.204
-  username: phamdat
-  password: Datdat@123
-  socket: /var/run/mysqld/mysqld.sock
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
+  database: db/development.sqlite3
+test:
+  <<: *default
+  database: db/test.sqlite3
+
 production:
   <<: *default
-  
+  database: db/production.sqlite3
