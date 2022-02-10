@@ -7,12 +7,14 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :code, presence: true
+
+  has_and_belongs_to_many :section_classes
   def admin?
-    true if role == 'admin'
+    role == 'admin'
   end
 
   def lecturer?
-    true if role == 'lecturer'
+    role == 'lecturer'
   end
 
   def full_name

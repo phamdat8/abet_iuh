@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_26_081256) do
+ActiveRecord::Schema.define(version: 2022_02_10_012239) do
 
   create_table "admin_subjects", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 2022_01_26_081256) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "score_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "importance"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_score_types_on_subject_id"
+  end
+
+  create_table "section_classes", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "section_classes_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "section_class_id", null: false
   end
 
   create_table "students", force: :cascade do |t|

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :subjects
     resources :original_classes
     resources :students
+    resources :section_classes
   end
   namespace 'lecturer' do
     root 'home#index'
