@@ -1,4 +1,29 @@
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
+<div class="p-5">
+  <h3><%= I18n.t('subjects') %> > <%= @subject.name%></h3>
+  <hr/>
+  <h4><%= I18n.t('basic_info') %></h4>
+  <div class="px-5">
+    <h5><%= I18n.t('name') %>: <%= @subject.name %></h5>
+  </div>
+
+  <hr/>
+  <h4><%= I18n.t('score_type') %></h4>
+    <table class="table caption-top">
+      <thead>
+        <tr>
+          <th scope="col"><%= I18n.t('no_') %></th>
+          <th scope="col"><%= I18n.t('subject.name') %></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @score_types.each do |score_type| %>
+          <tr>
+            <th scope="row"><%= score_type.id %></th>
+            <th><%= score_type.name %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+

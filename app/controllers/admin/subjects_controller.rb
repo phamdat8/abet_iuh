@@ -8,6 +8,7 @@ class Admin::SubjectsController < ApplicationController
 
   # GET /admin/subjects/1 or /admin/subjects/1.json
   def show
+    @score_types = ScoreType.where(subject_id: params[:id])
   end
 
   # GET /admin/subjects/new

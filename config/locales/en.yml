@@ -36,6 +36,7 @@ en:
   original_class:
     name: 'name'
     code: 'code'
+  section_classes: Section class
   students: 'Students'
   student_code: 'Student code'
   original_class_code: 'Original class code'
