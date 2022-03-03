@@ -40,9 +40,21 @@ vi:
   original_class_code: 'Mã lớp danh nghĩa'
   birth_day: 'Ngày sinh'
   students: 'Sinh viên'
+  score_types: 'Cột điểm'
+  score_type:
+    name: Tên cột điểm
+  basic_info: 'Thông tin cơ bản'
+  name: 'Tên'
+  importance: 'Hệ số'
+  section_classes: 'Lớp học phần'
+  section_class:
+    code: 'Mã lớp học phần'
   student:
     created: 'Tạo sinh sinh viên thành công'
     deleted: 'Xóa sinh viên thành công'
     edited: 'Chỉnh sửa sinh viên thành công'
     updated: 'Cập nhật sinh viên thành công'
+  auto: 'Tự tính toán'
+  manual: 'Giáo viên tự nhập'
+  #kha add sore board content
   

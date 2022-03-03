@@ -1,0 +1,47 @@
+<%= form_for ([:lecturer, student]) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <%= pluralize(student.errors.count, "error") %> prohibited this book from being saved:
+      <ul>
+        <% student.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mt-2">
+    <label><%= I18n.t('student_code') %><span class="text-danger">*</span></label>
+    <%= form.text_field :code, class:"form-control" %>
+  </div>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('first_name')%><span class="text-danger">*</span></label>
+    <%= form.text_field :first_name, class:"form-control" %>
+  </div>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('last_name')%><span class="text-danger">*</span></label>
+    <%= form.text_field :last_name, class:"form-control" %>
+  </div>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('phone')%></label>
+    <%= form.text_field :phone, class:"form-control" %>
+  </div>
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('birth_day')%></label>
+    <%= form.date_field :birthday, class:"form-control" %>
+  </div>
+
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('original_classes')%><span class="text-danger">*</span></label><br/>
+    <select name="student[original_class_id]" class="form-select">
+      <%OriginalClass.all.each do |c|%>
+        <option value='<%= c.id %>' <%= 'selected' if c.id == student.original_class_id%>><%= c.code %></option>
+      <%end%>
+    </select>
+  </div>
+
+  <div class="actions mt-2">
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="/lecturer/students"><button type="submit" class="btn btn-primary">Back</button></a>
+  </div>
+<% end %>

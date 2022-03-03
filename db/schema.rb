@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_104221) do
+ActiveRecord::Schema.define(version: 2022_02_25_170726) do
 
   create_table "admin_subjects", force: :cascade do |t|
     t.string "name"
@@ -25,12 +25,26 @@ ActiveRecord::Schema.define(version: 2022_02_17_104221) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "score_boards", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "score"
+    t.integer "score_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_auto"
+    t.index ["score_type_id"], name: "index_score_boards_on_score_type_id"
+    t.index ["student_id"], name: "index_score_boards_on_student_id"
+  end
+
   create_table "score_types", force: :cascade do |t|
     t.string "name"
     t.integer "importance"
     t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_auto"
+    t.string "code"
+    t.string "calculate"
     t.index ["subject_id"], name: "index_score_types_on_subject_id"
   end
 
@@ -58,6 +72,15 @@ ActiveRecord::Schema.define(version: 2022_02_17_104221) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["original_class_id"], name: "index_students_on_original_class_id"
+  end
+
+  create_table "subject_students", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_subject_students_on_student_id"
+    t.index ["subject_id"], name: "index_subject_students_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|

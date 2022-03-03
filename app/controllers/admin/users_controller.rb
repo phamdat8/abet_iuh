@@ -7,6 +7,12 @@ class Admin::UsersController < AdminController
     @user = User.new
   end
 
+  def import
+  end
+
+  def import_data
+  end
+
   def create
     @user = User.new(user_param)
     @user.password = '123456'

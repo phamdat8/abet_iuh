@@ -7,12 +7,14 @@
   </div>
 
   <hr/>
-  <h4><%= I18n.t('score_type') %></h4>
+  <h4><%= I18n.t('score_types') %></h4>
+    <a href='/admin/subjects/<%=@subject.id%>/score_types/new'><button class='btn btn-outline-success'>+</button></a>
     <table class="table caption-top">
       <thead>
         <tr>
           <th scope="col"><%= I18n.t('no_') %></th>
-          <th scope="col"><%= I18n.t('subject.name') %></th>
+          <th scope="col"><%= I18n.t('score_type.name') %></th>
+          <th scope="col"><%= I18n.t('score_type.importance') %></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -21,6 +23,11 @@
           <tr>
             <th scope="row"><%= score_type.id %></th>
             <th><%= score_type.name %></th>
+            <th><%= score_type.importance %></th>
+            <td class="d-flex justify-content-end">
+              <a href='/admin/subjects/<%= @subject.id %>/score_types/<%=score_type.id%>/edit'><i class="mx-1 far fa-edit"></i></a>
+              <a href='/admin/subjects/<%= @subject.id %>/score_types/<%=score_type.id%>' data-method="DELETE" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i class="mx-1 fas fa-trash-alt"></i></a>
+            </td>
           </tr>
         <% end %>
       </tbody>

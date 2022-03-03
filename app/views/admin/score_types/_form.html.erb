@@ -1,0 +1,26 @@
+<%= form_for ([:admin,:subject, score_type]) do |form| %>
+  <% if score_type.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% score_type.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('score_type.name')%><span class="text-danger">*</span></label>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group mt-2">
+    <label><%=I18n.t('score_type.importance')%><span class="text-danger">*</span></label>
+    <%= form.text_field :importance, class:"form-control" %>
+  </div>
+
+  <div class="actions mt-2">
+    <button type="submit" class="btn btn-success">Submit</button>
+    <a href="/admin/original_classes"><button type="submit" class="btn btn-primary">Back</button></a>
+  </div>
+<% end %>
