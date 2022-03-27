@@ -1,0 +1,14 @@
+<form class="new_permission" id="new_permission" action="/admin/section_classes/<%=@class.id%>/student_class" accept-charset="UTF-8" method="post">
+  <%=
+    render 'layouts/input/error',
+    data: invite
+  
+  %>
+  <%=
+    render 'layouts/input/select',
+    list: Student.all,
+    name: 'student_id',
+    label: 'students'
+  %>
+  <%= render 'layouts/input/action' %>
+</form>

@@ -8,7 +8,8 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
   end
 
   def show
-    @section_class = SectionClass.find(params[:id])
+    @class = SectionClass.find(params[:id])
+    @scores = ScoreBoard.where()
   end
 
   def create

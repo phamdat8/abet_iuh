@@ -47,3 +47,16 @@ en:
     edited: 'Edit student successfully'
     updated: 'Update student successfully'
   #kha add sore board content
+  section_classes: Section class
+  section_class:
+    code: Code
+  select_required: Required
+  basic_info: Basic infomation
+  scores: Score
+  permissions: Permission
+  id: ID
+  lecturer: Lecturer
+  types: Type
+  type:
+    theory: Theory
+    practice: Practice

@@ -1,0 +1,12 @@
+<div class='p-5'>
+  <h3><%= I18n.t('section_classes') %> > <%= I18n.t('list') %></h3>
+  <hr/>
+  <a href='/admin/section_classes/new'><button class='btn btn-outline-success'>+</button></a>
+  <%=
+    render '/layouts/table',
+    data: @section_classes,
+    columns: ['id', 'code', 'count_student'],
+    action: ['show'],
+    link: "lecturer/section_classes"
+  %>
+</div>

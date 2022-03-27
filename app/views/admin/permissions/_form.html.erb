@@ -1,0 +1,27 @@
+<%= form_for ([:admin,:section_class, permission]) do |form| %>
+  <% if permission.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% permission.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%=
+    render 'layouts/input/select',
+    list: User.where(role: 'lecturer'),
+    name: 'permission[user_id]',
+    label: 'lecturer'
+  %>
+  <div class="field form-group mt-2">
+  <label><%=I18n.t('types')%><span class="text-danger">*</span></label><br/>
+  <select name="permission[misson]" class="form-select">
+    <option value="theory"><%=I18n.t('type.theory')%></option>
+    <option value="practice"><%=I18n.t('type.practice')%></option>
+  </select>
+</div>
+
+  <%= render 'layouts/input/action' %>
+<% end %>

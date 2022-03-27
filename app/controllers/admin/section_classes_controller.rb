@@ -8,7 +8,9 @@ class Admin::SectionClassesController < Admin::HomeController
   end
 
   def show
-    @section_class = SectionClass.find(params[:id])
+    @class = SectionClass.find(params[:id])
+    @permissions = Permission.where(section_class_id: params[:id])
+    @students = StudentClass.where(section_class_id: params[:id])
   end
 
   def create

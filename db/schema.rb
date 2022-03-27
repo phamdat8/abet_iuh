@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_170726) do
+ActiveRecord::Schema.define(version: 2022_03_27_051658) do
 
   create_table "admin_subjects", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2022_02_25_170726) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "section_class_id"
+    t.string "misson"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_class_id"], name: "index_permissions_on_section_class_id"
+    t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
   create_table "score_boards", force: :cascade do |t|
@@ -59,6 +70,15 @@ ActiveRecord::Schema.define(version: 2022_02_25_170726) do
   create_table "section_classes_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "section_class_id", null: false
+  end
+
+  create_table "student_classes", force: :cascade do |t|
+    t.integer "student_id"
+    t.integer "section_class_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_class_id"], name: "index_student_classes_on_section_class_id"
+    t.index ["student_id"], name: "index_student_classes_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

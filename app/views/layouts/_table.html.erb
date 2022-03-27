@@ -1,0 +1,32 @@
+<%# @data, @action, @link, @columns%>
+<table class="table caption-top">
+  <thead>
+    
+    <tr>
+      <% columns.each do |column| %>
+        <th scope="col"><%= I18n.t("#{column}") %></th>
+      <% end %>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.each do |row| %>
+      <tr>
+      <% columns.each do |column| %>
+        <td><%= row.send(column) %></td>
+      <% end %>
+      <td class="d-flex justify-content-end">
+        <% if action.include?('show') %>
+          <a href='<%="/#{link}/#{row.id}"%>'><i class="mx-1 fas fa-angle-double-right"></i></a>
+        <% end %>
+        <% if action.include?('edit') %>
+          <a href='<%="/#{link}/#{row.id}/edit"%>'><i class="mx-1 far fa-edit"></i></a> 
+        <% end %>
+        <% if action.include?('delete')  %>
+          <a href='<%="/#{link}/#{row.id}"%>' data-method="DELETE" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i class="mx-1 fas fa-trash-alt"></i></a>
+        <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
