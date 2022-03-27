@@ -52,7 +52,8 @@ vi:
   students: 'Sinh viên'
   score_types: 'Cột điểm'
   score_type:
-    name: Tên cột điểm
+    name: 'Tên cột điểm'
+    importance: 'Hệ số'
   basic_info: 'Thông tin cơ bản'
   name: 'Tên'
   importance: 'Hệ số'
@@ -74,6 +75,12 @@ vi:
       invalid: 'Điểm số không hợp lệ'
   student_name: 'Tên học sinh'
   export: 'xuất file'
-
-  #kha add sore board content
+  abet_levels: 'Thang điểm ABET'
+  abet_level:
+    score_type:
+      des:  'Cột điểm (dùng để tính toán thang điểm abet)'
+    d_c: 'Điểm D (nhỏ hơn)'
+    c_b: 'Điểm C (Lớn hơn điểm D và nhỏ hơn)'
+    b_a: 'Điểm B (Lớn hơn điểm C và nhỏ hơn)'
+    a: 'Điểm A (Lớn hơn điểm B)'
   

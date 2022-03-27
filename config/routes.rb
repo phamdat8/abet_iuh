@@ -136,6 +136,7 @@ Rails.application.routes.draw do
     post '/user/import', to: 'users#import_data'
     resources :subjects do
       resources :score_types
+      resources :abet_levels
     end
     resources :original_classes
     resources :students

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_141717) do
+ActiveRecord::Schema.define(version: 2022_03_27_174501) do
+
+  create_table "abet_levels", force: :cascade do |t|
+    t.string "type"
+    t.string "value"
+    t.integer "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_abet_levels_on_subject_id"
+  end
 
   create_table "admin_subjects", force: :cascade do |t|
     t.string "name"

@@ -1,0 +1,38 @@
+<div class="p-5">
+  <h3><%= I18n.t('subjects') %> > <%= @subject.name %> > <%= I18n.t('abet_levels') %> > <%= I18n.t('new') %></h3>
+  <hr/>
+
+  <form action="/admin/subjects/<%=@subject.id%>/abet_levels" accept-charset="UTF-8" method="post">
+    <%=
+      render 'layouts/input/error',
+      data: @abet_level
+    %>
+    <div class="field form-group mt-2">
+      <label><%=I18n.t('abet_level.score_type.des')%><span class="text-danger">*</span></label><br/>
+      <select name="<%= 'score_type' %>" class="form-select">
+        <option value="0"><%=I18n.t('select_required')%></option>
+        <% ScoreType.where(subject_id: @subject.id).each do |data| %>
+          <option value="<%= data.name %>" ><%=data.name%></option>
+        <% end %>
+        <option value="TB" >TB</option>
+      </select>
+</div>
+    <%=
+      render 'layouts/input/number',
+      name: 'd_c',
+      label: 'abet_level.d_c'
+    %>
+    <%=
+      render 'layouts/input/number',
+      name: 'c_b',
+      label: 'abet_level.c_b'
+    %>
+     <%=
+      render 'layouts/input/number',
+      name: 'b_a',
+      label: 'abet_level.b_a'
+    %>
+    <label><%=I18n.t('abet_level.a')%></label><br/>
+    <%= render 'layouts/input/action' %>
+  </form>
+</div>
