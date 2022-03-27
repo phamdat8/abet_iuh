@@ -149,6 +149,10 @@ Rails.application.routes.draw do
     resources :students
     resources :subjects
     resources :score_boards
-    resources :section_classes
+    resources :section_classes do
+      post :export
+      resources :score_boards do
+      end
+    end
   end
 end

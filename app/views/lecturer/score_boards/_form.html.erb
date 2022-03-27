@@ -1,0 +1,30 @@
+<form class="new_permission" id="new_permission" action="/lecturer/section_classes/<%=section_class.id%>/score_boards" accept-charset="UTF-8" method="post">
+  <%=
+    render 'layouts/input/error',
+    data: score_board
+  
+  %>
+
+  <%=
+    render 'layouts/input/select',
+    list: ScoreType.where(id: score_type_ids),
+    name: 'score_type_id',
+    label: 'score_types'
+  %>
+  
+  <%=
+    render 'layouts/input/select',
+    list: Student.where(id: student_ids),
+    name: 'student_id',
+    label: 'students'
+  %>
+
+  <%=
+    render 'layouts/input/number',
+    name: 'score',
+    label: 'scores'
+  %>
+
+  
+  <%= render 'layouts/input/action' %>
+</form>

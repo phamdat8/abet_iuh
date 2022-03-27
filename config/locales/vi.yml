@@ -1,4 +1,14 @@
 vi:
+  activerecord:
+    errors:
+      messages:
+        required: 'không được để trống'
+    models:
+      attributes:
+        score_board:
+          student_id:
+            one: 'â'
+            many: 'aa'
   user:
     users: 'Tài khoản'
     created: 'Tạo tài khoản thành công'
@@ -56,5 +66,14 @@ vi:
     updated: 'Cập nhật sinh viên thành công'
   auto: 'Tự tính toán'
   manual: 'Giáo viên tự nhập'
+  select_required: 'Vui lòng chọn'
+  scores: 'Điểm số'
+  score_boards: 'Bảng điểm'
+  score_board:
+    score:
+      invalid: 'Điểm số không hợp lệ'
+  student_name: 'Tên học sinh'
+  export: 'xuất file'
+
   #kha add sore board content
   

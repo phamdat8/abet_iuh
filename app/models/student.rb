@@ -26,4 +26,24 @@ class Student < ApplicationRecord
   def name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def get_score(subject_id, name)
+    begin
+      if name == 'TB'
+        sum = 0
+        sum_imp = 0
+        score_types = ScoreType.where(subject_id: subject_id)
+        score_types.each do |type|
+          sum_imp += type.importance
+          sum += ScoreBoard.where(score_type_id: type.id, student_id: id).first.score
+        end
+        sum/sum_imp
+      else
+        score_type = ScoreType.where(subject_id: subject_id, name: name).first
+        ScoreBoard.where(score_type_id: score_type.id, student_id: id).first.score
+      end
+    rescue
+      'N/A'
+    end
+  end
 end

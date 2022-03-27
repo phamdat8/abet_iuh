@@ -19,4 +19,35 @@ class SectionClass < ApplicationRecord
   def count_student
     StudentClass.where(section_class_id: id).count
   end
+
+  def export
+    score_type =  ScoreType.where(subject_id: subject_id).pluck(:name) << 'TB'
+    header = ['CODE', 'Full name'] + score_type
+    workbook = RubyXL::Workbook.new
+    sheet = workbook[0]
+    count = 0
+    header.each do |name|
+      sheet.add_cell(0, count, name)
+      count += 1
+    end
+    student_ids = StudentClass.where(section_class_id: id).pluck(:student_id)
+    @students = Student.where(id: student_ids)
+    student_count = 1
+    @students.each do |student|
+      data = []
+      data << student.code << student.name
+      score_type.each do |type|
+        data << student.get_score(subject_id, type)
+      end
+      count = 0
+      data.each do |value|
+        sheet.add_cell(student_count, count, value)
+        count += 1
+      end
+      student_count += 1
+    end
+
+    File.delete("tmp/export/section_class_#{id}.xlsx") if File.exist?("tmp/export/section_class_#{id}.xlsx")
+    workbook.write("tmp/export/section_class_#{id}.xlsx")
+  end
 end

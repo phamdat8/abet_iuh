@@ -3,23 +3,31 @@
 
   <hr/>
   <h4><%= I18n.t('score_boards') %></h4>
-  <a href='/admin/section_classes/<%=@class.id%>/scores/new'><button class='btn btn-outline-success'>+</button></a>
-  <%= render 'layouts/table',
-      data: @scores,
-      columns: ['id', 'user_name', 'misson'],
-      action: ['delete'],
-      link: "admin/section_classes/#{@class.id}/permissions"
-  %>
-  
-  <hr/>
-  <h4><%= I18n.t('students') %></h4>
-  <a href='/admin/section_classes/<%=@class.id%>/student_class/new'><button class='btn btn-outline-success'>+</button></a>
+  <a href='/lecturer/section_classes/<%=@class.id%>/score_boards/new'><button class='btn btn-outline-success'>+</button></a>
+  <a href='/lecturer/section_classes/<%=@class.id%>/export' data-method='POST'><button class='btn btn-outline-success'><%= I18n.t('export') %></button></a>
+  <table class="table caption-top">
+  <thead> 
+    <tr>
+        <th scope="col"><%= I18n.t('student_name')%></th>
+        <th scope="col"><%= I18n.t('student_code')%></th>
+        <% @score_types.each do |type| %>
+        <th scope="col"><%= type %></th>
+        <% end %>
 
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%=student.name%></td>
+          <td><%=student.code%></td>
+          <% @score_types.each do |type| %>
+          <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
 
-  <%= render 'layouts/table',
-      data: @students,
-      columns: ['id', 'name'],
-      action: ['delete'],
-      link: "admin/section_classes/#{@class.id}/student_class"
-  %>
 </div>
