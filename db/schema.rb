@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_174501) do
+ActiveRecord::Schema.define(version: 2022_03_28_070148) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2022_03_27_174501) do
     t.integer "score_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_auto"
     t.index ["score_type_id"], name: "index_score_boards_on_score_type_id"
     t.index ["student_id"], name: "index_score_boards_on_student_id"
   end
@@ -62,9 +61,6 @@ ActiveRecord::Schema.define(version: 2022_03_27_174501) do
     t.integer "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_auto"
-    t.string "code"
-    t.string "calculate"
     t.index ["subject_id"], name: "index_score_types_on_subject_id"
   end
 
@@ -116,6 +112,10 @@ ActiveRecord::Schema.define(version: 2022_03_27_174501) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "d_c"
+    t.string "c_b"
+    t.string "b_a"
+    t.string "abet_score_type"
   end
 
   create_table "users", force: :cascade do |t|

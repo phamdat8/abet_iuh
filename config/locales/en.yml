@@ -17,6 +17,7 @@ en:
   login: 'Login'
   list: 'List'
   no_: 'No'
+  name: 'Name'
   new: 'New'
   edit: 'Edit'
   back: 'Back'
@@ -46,13 +47,13 @@ en:
     deleted: 'Delete student successfully'
     edited: 'Edit student successfully'
     updated: 'Update student successfully'
-  #kha add sore board content
   section_classes: Section class
   section_class:
     code: Code
   select_required: Required
   basic_info: Basic infomation
   scores: Score
+  score_types: Score Tpye
   permissions: Permission
   id: ID
   lecturer: Lecturer
@@ -60,3 +61,21 @@ en:
   type:
     theory: Theory
     practice: Practice
+  abet_levels: 'ABET levels'
+  abet_level:
+    score_type:
+      des:  'Score type (use to calculate ABET levels)'
+    d_c: 'D type (less than)'
+    c_b: 'C type (more than D type and less than)'
+    b_a: 'B type (more than C type and less than)'
+    a: 'A type (more than B type)'
+  subject_type: 'Type'
+  value: 'Value'
+  d_type: 'D type'
+  c_type: 'C type'
+  b_type: 'B type'
+  a_type: 'A type'
+  form_to_less: "Form %{form} to less than %{to}"
+  form_to: "Form %{form} to %{to}"
+  abet_score_type: Abet score type
+  auto_calc: Auto calculate

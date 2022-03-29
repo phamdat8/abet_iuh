@@ -3,7 +3,6 @@
 # Table name: score_boards
 #
 #  id            :integer          not null, primary key
-#  is_auto       :boolean
 #  score         :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

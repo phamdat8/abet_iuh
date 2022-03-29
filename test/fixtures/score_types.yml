@@ -3,10 +3,7 @@
 # Table name: score_types
 #
 #  id         :integer          not null, primary key
-#  calculate  :string
-#  code       :string
 #  importance :integer
-#  is_auto    :boolean
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
