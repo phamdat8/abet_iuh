@@ -35,7 +35,7 @@ class Student < ApplicationRecord
         score_types = ScoreType.where(subject_id: subject_id)
         score_types.each do |type|
           sum_imp += type.importance
-          sum += ScoreBoard.where(score_type_id: type.id, student_id: id).first.score
+          sum += ScoreBoard.find_by(score_type_id: type.id, student_id: id).score * type.importance
         end
         sum/sum_imp
       else

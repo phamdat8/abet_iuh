@@ -47,13 +47,17 @@ en:
     deleted: 'Delete student successfully'
     edited: 'Edit student successfully'
     updated: 'Update student successfully'
-  section_classes: Section class
+    existed: 'Student existed'
+  score_types: 'Score type'
+  score_type:
+    name: 'Score type name'
+    importance: 'Impotance'
+  basic_info: 'Basic Infomation'
+  importance: 'Impotance'
   section_class:
     code: Code
   select_required: Required
-  basic_info: Basic infomation
   scores: Score
-  score_types: Score Tpye
   permissions: Permission
   id: ID
   lecturer: Lecturer
@@ -79,3 +83,12 @@ en:
   form_to: "Form %{form} to %{to}"
   abet_score_type: Abet score type
   auto_calc: Auto calculate
+  user_name: Lecturer name
+  misson: Misson
+  lecturers: Lecturers
+  student_class:
+    created: 'Add student to class successfully'
+  permission:
+    created: 'Add lecturer to class sucessfully'
+  score_board:
+    created: 'Insert score successfully'

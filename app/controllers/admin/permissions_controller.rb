@@ -13,6 +13,11 @@ class Admin::PermissionsController < Admin::HomeController
       render 'new'
       return
     end
+    if Permission.exists?(section_class_id: params['section_class_id'], misson: permission_param[:misson], user_id: permission_param[:user_id])
+      @permission.errors[:base] << I18n.t('theory.teacher.existed')
+      render 'new'
+      return
+    end
     if @permission.save
       flash.alert = I18n.t('permission.created')
       redirect_to admin_section_class_url(@class)

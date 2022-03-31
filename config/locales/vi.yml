@@ -1,14 +1,4 @@
 vi:
-  activerecord:
-    errors:
-      messages:
-        required: 'không được để trống'
-    models:
-      attributes:
-        score_board:
-          student_id:
-            one: 'â'
-            many: 'aa'
   user:
     users: 'Tài khoản'
     created: 'Tạo tài khoản thành công'
@@ -27,6 +17,7 @@ vi:
   login: 'Đăng nhập'
   list: 'Danh sách'
   no_: 'STT'
+  name: 'Tên'
   new: 'Tạo mới'
   edit: 'Chỉnh sửa'
   back: 'Trở về'
@@ -46,33 +37,41 @@ vi:
   original_class:
     name: 'Tên'
     code: 'Mã lớp'
+  students: 'Sinh viên'
   student_code: 'MSSV'
   original_class_code: 'Mã lớp danh nghĩa'
   birth_day: 'Ngày sinh'
-  students: 'Sinh viên'
+  student:
+    created: 'Tạo sinh viên thành công'
+    deleted: 'Xóa sinh viên thành công'
+    edited: 'Chỉnh sửa sinh viên thành công'
+    updated: 'Cập nhật sinh viên thành công'
+    existed: 'Sinh viên đã tồn tại'
   score_types: 'Cột điểm'
   score_type:
     name: 'Tên cột điểm'
     importance: 'Hệ số'
   basic_info: 'Thông tin cơ bản'
-  name: 'Tên'
   importance: 'Hệ số'
   section_classes: 'Lớp học phần'
   section_class:
     code: 'Mã lớp học phần'
-  student:
-    created: 'Tạo sinh sinh viên thành công'
-    deleted: 'Xóa sinh viên thành công'
-    edited: 'Chỉnh sửa sinh viên thành công'
-    updated: 'Cập nhật sinh viên thành công'
+  scores: Điểm
+  permissions: Quyền
+  id: ID
+  lecturer: Lecturer
+  types: Type
+  type:
+    theory: Theory
+    practice: Practice
   auto: 'Tự tính toán'
   manual: 'Giáo viên tự nhập'
   select_required: 'Vui lòng chọn'
-  scores: 'Điểm số'
   score_boards: 'Bảng điểm'
   score_board:
     score:
       invalid: 'Điểm số không hợp lệ'
+    created: 'Nhập điểm thành công'
   student_name: 'Tên học sinh'
   export: 'xuất file'
   abet_levels: 'Thang điểm ABET'
@@ -83,4 +82,22 @@ vi:
     c_b: 'Điểm C (Lớn hơn điểm D và nhỏ hơn)'
     b_a: 'Điểm B (Lớn hơn điểm C và nhỏ hơn)'
     a: 'Điểm A (Lớn hơn điểm B)'
-  
+  subject_type: 'Loại'
+  value: 'Giá trị'
+  d_type: 'Điểm D'
+  c_type: 'Điểm C'
+  b_type: 'Điểm B'
+  a_type: 'Điểm A'
+  form_to_less: "Form %{form} to less than %{to}"
+  form_to: "Form %{form} to %{to}"
+  abet_score_type: Abet score type
+  auto_calc: Auto calculate  
+  user_name: 'Tên giáo viên'
+  misson: 'Chức vụ'
+  lecturers: 'Giáo viên'
+  student_class:
+    created: 'Thêm học sinh vào lớp thành công'
+  permission:
+    created: 'Thêm giáo viên vào lớp học thành công'
+  count_student: 'Số lượng'
+  code: 'CODE'

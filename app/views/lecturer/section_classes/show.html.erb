@@ -29,5 +29,13 @@
       <% end %>
   </tbody>
 </table>
+<div class='row'>
+  <div class='col-6'>
+    <%= pie_chart(@data, colors: ["green", "blue", "yellow", "red", "gray"]) %>
+  </div>
+  <div class='col-6'>
+    <%= column_chart(@data) %>
+  </div>
+</div>
 
 </div>
