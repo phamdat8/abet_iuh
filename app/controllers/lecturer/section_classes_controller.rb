@@ -11,11 +11,11 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
 
   def show
     @data = {}
-    @data['a'] = 0
-    @data['b'] = 0
-    @data['c'] = 0
-    @data['d'] = 0
-    @data['n/a'] = 0
+    @data['A'] = 0
+    @data['B'] = 0
+    @data['C'] = 0
+    @data['D'] = 0
+    @data['N/A'] = 0
     @class = SectionClass.find(params[:id])
     @scores = ScoreBoard.where(section_class_id: params[:id])
     @score_types = ScoreType.where(subject_id: @class.subject_id).pluck(:name) << 'TB'
@@ -25,15 +25,15 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
     @students.each do | student |
       score = student.get_score(@subject.id, @subject.abet_score_type)
       if score == 'N/A'
-        @data['n/a'] += 1
+        @data['N/A'] += 1
       elsif score > @subject.b_a.to_i
-        @data['a'] += 1
+        @data['A'] += 1
       elsif score > @subject.c_b.to_i
-        @data['b'] += 1
+        @data['B'] += 1
       elsif score > @subject.d_c.to_i
-        @data['c'] += 1
+        @data['C'] += 1
       else
-        @data['d'] += 1
+        @data['D'] += 1
       end
     end
   end
@@ -48,7 +48,7 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
   def export
     @class = SectionClass.find(params[:section_class_id])
     @class.export
-    send_file("#{Rails.root}/tmp/export/section_class_#{@class.id}.xlsx")
+    send_file("#{Rails.root}/storage/export/section_class_#{@class.id}.xlsx")
   end
 
   def update

@@ -47,7 +47,7 @@ class SectionClass < ApplicationRecord
       student_count += 1
     end
 
-    File.delete("tmp/export/section_class_#{id}.xlsx") if File.exist?("tmp/export/section_class_#{id}.xlsx")
-    workbook.write("tmp/export/section_class_#{id}.xlsx")
+    File.delete("storage/export/section_class_#{id}.xlsx") if File.exist?("storage/export/section_class_#{id}.xlsx")
+    workbook.write("storage/export/section_class_#{id}.xlsx")
   end
 end
