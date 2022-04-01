@@ -101,3 +101,6 @@ vi:
     created: 'Thêm giáo viên vào lớp học thành công'
   count_student: 'Số lượng'
   code: 'CODE'
+  chart:
+    abet: 'Biểu đồ loại ABET(số lượng)'
+    percent: 'Biểu đồ loại ABET(%)'

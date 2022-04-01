@@ -92,3 +92,6 @@ en:
     created: 'Add lecturer to class sucessfully'
   score_board:
     created: 'Insert score successfully'
+  chart:
+    abet: 'Chart of ABET type (amount)'
+    percent: 'Chart of ABET type (percent)'

@@ -36,6 +36,13 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
         @data['D'] += 1
       end
     end
+    @pie_data = {}
+    @pie_data['A'] =  @data['A']*100 / @students.count
+    @pie_data['B'] =  @data['B']*100 / @students.count
+    @pie_data['C'] =  @data['C']*100 / @students.count
+    @pie_data['D'] =  @data['D']*100 / @students.count
+    @pie_data['N/A'] =@data['N/A']*100 / @students.count
+    
   end
 
   def create

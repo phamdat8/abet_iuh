@@ -27,6 +27,21 @@ class Student < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def abet_type(subject)
+   score = get_score(subject.id, subject.abet_score_type)
+    if score == 'N/A'
+      return 'N/A'
+    elsif score > subject.b_a.to_i
+      return 'A'
+    elsif score > subject.c_b.to_i
+      return 'B'
+    elsif score > subject.d_c.to_i
+      return 'C'
+    else
+      return 'D'
+    end
+  end
+
   def get_score(subject_id, name)
     begin
       if name == 'TB'

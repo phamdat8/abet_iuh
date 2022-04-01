@@ -6,36 +6,38 @@
   <a href='/lecturer/section_classes/<%=@class.id%>/score_boards/new'><button class='btn btn-outline-success'>+</button></a>
   <a href='/lecturer/section_classes/<%=@class.id%>/export' data-method='POST'><button class='btn btn-outline-success'><%= I18n.t('export') %></button></a>
   <table class="table caption-top">
-  <thead> 
-    <tr>
-        <th scope="col"><%= I18n.t('student_name')%></th>
-        <th scope="col"><%= I18n.t('student_code')%></th>
-        <% @score_types.each do |type| %>
-        <th scope="col"><%= type %></th>
-        <% end %>
-
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <td><%=student.name%></td>
-          <td><%=student.code%></td>
+    <thead> 
+      <tr>
+          <th scope="col"><%= I18n.t('student_name')%></th>
+          <th scope="col"><%= I18n.t('student_code')%></th>
           <% @score_types.each do |type| %>
-          <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+          <th scope="col"><%= type %></th>
           <% end %>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-<div class='row'>
-  <div class='col-6'>
-    <%= pie_chart(@data, colors: ["green", "blue", "yellow", "red", "gray"]) %>
+          <th scope="col">ABET Type</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%=student.name%></td>
+            <td><%=student.code%></td>
+            <% @score_types.each do |type| %>
+            <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+            <% end %>
+            <td><%= student.abet_type(Subject.find(@class.subject_id)) %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <hr/>
+  <div class='row'>
+    <div class='col-6 text-center'>
+      <%= pie_chart(@pie_data, colors: ["green", "blue", "yellow", "red", "gray"], suffix: "%") %>
+      <h4><%= I18n.t('chart.percent') %></h4>
+    </div>
+    <div class='col-6 text-center'>
+      <%= column_chart(@data) %>
+      <h4><%= I18n.t('chart.abet') %></h4>
+    </div>
   </div>
-  <div class='col-6'>
-    <%= column_chart(@data) %>
-  </div>
-</div>
-
 </div>
