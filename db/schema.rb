@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_070148) do
+ActiveRecord::Schema.define(version: 2022_04_01_041119) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -25,6 +25,24 @@ ActiveRecord::Schema.define(version: 2022_03_28_070148) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "learning_outcomes", force: :cascade do |t|
+    t.integer "subject_id"
+    t.string "name"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_learning_outcomes_on_subject_id"
+  end
+
+  create_table "lo_types", force: :cascade do |t|
+    t.integer "learning_outcome_id"
+    t.string "name"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_outcome_id"], name: "index_lo_types_on_learning_outcome_id"
   end
 
   create_table "original_classes", force: :cascade do |t|
@@ -69,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_070148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subject_id"
+    t.string "semester"
     t.index ["subject_id"], name: "index_section_classes_on_subject_id"
   end
 

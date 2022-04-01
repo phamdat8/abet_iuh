@@ -1,0 +1,13 @@
+<div class="p-5">
+  <h3><%= I18n.t('subjects') %> > <%= @subject.name %> > <%= @lo.name %> > <%= I18n.t('show') %></h3>
+  <hr/>
+  <a href='/admin/subjects/<%=@subject.id%>/learning_outcomes/<%=@lo.id%>/lo_types/new'><button class='btn btn-outline-success'>+</button></a>
+
+  <%=
+    render 'layouts/table',
+    data: @lo_types,
+    columns: ['name', 'title'],
+    action: ['delete'],
+    link: "admin/subjects/#{@subject.id}/learning_outcomes/#{@lo.id}/lo_types"
+  %>
+</div>

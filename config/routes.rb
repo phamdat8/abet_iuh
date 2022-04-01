@@ -137,6 +137,9 @@ Rails.application.routes.draw do
     resources :subjects do
       resources :score_types
       resources :abet_levels
+      resources :learning_outcomes do
+        resources :lo_types
+      end
     end
     resources :original_classes
     resources :students

@@ -71,5 +71,15 @@
       </tr>
     </tbody>
   </table>
+
+  <h4><%= I18n.t('lo') %></h4>
+  <a href='/admin/subjects/<%=@subject.id%>/learning_outcomes/new'><button class='btn btn-outline-success'>+</button></a>
+  <%=
+    render 'layouts/table',
+    data: @lo,
+    columns: ['name', 'title'],
+    action: ['delete', 'show'],
+    link: "admin/subjects/#{@subject.id}/learning_outcomes"
+  %>
 </div>
 

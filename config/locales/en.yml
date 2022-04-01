@@ -95,3 +95,5 @@ en:
   chart:
     abet: 'Chart of ABET type (amount)'
     percent: 'Chart of ABET type (percent)'
+  lo: 'LO'
+  title: 'Title'

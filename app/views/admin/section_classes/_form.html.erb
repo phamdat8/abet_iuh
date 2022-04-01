@@ -18,6 +18,13 @@
     </select>
   </div>
 
+  <%=
+    render 'layouts/input/select',
+    list: User.where(role: 'lecturer'),
+    name: 'permission[user_id]',
+    label: 'lecturer'
+  %>
+
   <div class="field form-group mt-2">
     <label><%=I18n.t('section_class.code')%><span class="text-danger">*</span></label>
     <%= form.text_field :code, class:"form-control" %>

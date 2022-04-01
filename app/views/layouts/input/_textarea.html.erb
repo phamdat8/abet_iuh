@@ -1,4 +1,4 @@
 <div class="field form-group mt-2">
   <label><%=I18n.t("#{label}")%><span class="text-danger">*</span></label>
-  <input type='text' class='form-control' <%= 'required' if required %> name='<%= name %>' >
+  <textarea class='form-control' name='<%= name %>' <%= 'required' if required %> rows=5 ></textarea>
 </div>

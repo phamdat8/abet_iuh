@@ -27,6 +27,6 @@ class Admin::SectionClassesController < Admin::HomeController
   private
 
   def section_class_params
-    params.require(:section_class).permit(:subject_id, :code)
+    params.require(:section_class).permit(:subject_id, :code, :semester)
   end
 end
