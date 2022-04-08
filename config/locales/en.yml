@@ -97,3 +97,11 @@ en:
     percent: 'Chart of ABET type (percent)'
   lo: 'LO'
   title: 'Title'
+  semester_name: 'Semester'
+  so:
+    name: 'Name'
+    semester: 'Semester'
+  content: 'Content'
+  subject_name: 'Subject'
+  lo_name: 'LO name'
+  priority: 'Priority'

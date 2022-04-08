@@ -9,10 +9,20 @@ class Admin::LearningOutcomesController < Admin::HomeController
 
   def create
     @subject = Subject.find(params[:subject_id])
-    @lo = LearningOutcome.new
-    @lo.subject_id = params[:subject_id]
-    @lo.name = params[:name]
-    @lo.title = params[:title]
+    data = {
+      subject_id: params[:subject_id],
+      name: params[:name],
+      title: params[:title],
+      d_c: params[:d_c],
+      c_b: params[:c_b],
+      b_a: params[:b_a],
+      d_content: params[:d_content],
+      c_content: params[:c_content],
+      b_content: params[:b_content],
+      a_content: params[:a_content],
+      abet_score_type: params[:score_type]
+    }
+    @lo = LearningOutcome.new(data)
     if @lo.save
       flash.alert = I18n.t('learing_outcome.created')
       redirect_to admin_subject_url(@subject)
@@ -31,7 +41,7 @@ class Admin::LearningOutcomesController < Admin::HomeController
   def destroy
     @subject = Subject.find(params[:subject_id])
     @lo = LearningOutcome.find(params[:id])
-    @lo.destroy
+    @lo.destroy_all
     flash.alert = I18n.t('learing_outcome.deleted')
     redirect_to admin_subject_url(@subject)
   end

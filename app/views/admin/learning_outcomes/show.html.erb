@@ -3,11 +3,34 @@
   <hr/>
   <a href='/admin/subjects/<%=@subject.id%>/learning_outcomes/<%=@lo.id%>/lo_types/new'><button class='btn btn-outline-success'>+</button></a>
 
-  <%=
-    render 'layouts/table',
-    data: @lo_types,
-    columns: ['name', 'title'],
-    action: ['delete'],
-    link: "admin/subjects/#{@subject.id}/learning_outcomes/#{@lo.id}/lo_types"
-  %>
+  <table class="table caption-top">
+    <thead>
+      <tr>
+        <th scope="col"><%= I18n.t('subject_type') %></th>
+        <th scope="col"><%= I18n.t('value') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= I18n.t('d_type') %></td>
+        <td><%= I18n.t('form_to_less', form: '0', to: @lo.d_c) %></td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('c_type') %></td>
+        <td><%= I18n.t('form_to_less', form: @lo.d_c, to: @lo.c_b) %></td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('b_type') %></td>
+        <td><%= I18n.t('form_to_less', form: @lo.c_b, to: @lo.b_a) %></td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('a_type') %></td>
+        <td><%= I18n.t('form_to', form: @lo.b_a, to: '10') %></td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('abet_score_type') %></td>
+        <td><%= @lo.abet_score_type %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
