@@ -1,3 +1,6 @@
+<%
+required = required || true
+%>
 <div class="field form-group mt-2">
   <label><%=I18n.t("#{label}")%><span class="text-danger">*</span></label>
   <textarea class='form-control' name='<%= name %>' <%= 'required' if required %> rows=5 ></textarea>

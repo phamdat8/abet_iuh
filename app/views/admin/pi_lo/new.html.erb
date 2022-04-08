@@ -1,0 +1,33 @@
+<div class="p-5">
+  <h3><%= @so.name %> > <%= @pi.id %> > <%= I18n.t('new') %></h3>
+  <hr/>
+  <form action="/admin/so/<%=@so.id%>/pi/<%=@pi.id%>/pi_lo" accept-charset="UTF-8" method="post">
+    <%=
+      render 'layouts/input/error',
+      data: @pi_lo
+    %>
+    <%=
+      render 'layouts/input/select',
+      name: 'lo_id',
+      label: 'lo',
+      list: ::LearningOutcome.list_data
+    %>
+
+    <%=
+      render 'layouts/input/select',
+      name: 'priority',
+      label: 'priority',
+      list: @pri_list
+    %>
+
+    <%=
+      render 'layouts/input/number',
+      name: 'process',
+      label: 'process',
+      min: 1,
+      max: 10
+    %>
+    
+    <%= render 'layouts/input/action' %>
+  </form>
+</div>

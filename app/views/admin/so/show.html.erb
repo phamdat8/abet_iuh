@@ -1,0 +1,21 @@
+<div class="p-5">
+  <h3>SO > <%= @so.name %></h3>
+  <hr/>
+  <h4><%= I18n.t('basic_info') %></h4>
+  <div class="px-5">
+    <h5><%= I18n.t('so.name') %>: <%= @so.name %></h5>
+    <h5><%= I18n.t('so.semester') %>: <%= @so.semester_name %></h5>
+    <h5><%= I18n.t('content') %>:</h5>
+    <p class='px-3'><%= @so.content %></p>
+  </div>
+  <hr/>
+  <a href='/admin/so/<%=@so.id%>/pi/new'><button class='btn btn-outline-success'>+</button></a>
+  <%=
+    render 'layouts/table',
+    data: @pi,
+    columns: ['id', 'content'],
+    action: ['show', 'delete'],
+    link: "admin/so/#{@so.id}/pi"
+  %>
+
+</div>

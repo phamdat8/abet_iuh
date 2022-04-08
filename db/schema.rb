@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_01_041119) do
+ActiveRecord::Schema.define(version: 2022_04_08_040044) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2022_04_01_041119) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "d_c"
+    t.string "c_b"
+    t.string "b_a"
+    t.string "abet_score_type"
+    t.string "a_content"
+    t.string "b_content"
+    t.string "c_content"
+    t.string "d_content"
     t.index ["subject_id"], name: "index_learning_outcomes_on_subject_id"
   end
 
@@ -63,6 +71,25 @@ ActiveRecord::Schema.define(version: 2022_04_01_041119) do
     t.index ["user_id"], name: "index_permissions_on_user_id"
   end
 
+  create_table "pi_los", force: :cascade do |t|
+    t.integer "pi_id"
+    t.integer "learning_outcome_id"
+    t.string "process"
+    t.string "priority"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_outcome_id"], name: "index_pi_los_on_learning_outcome_id"
+    t.index ["pi_id"], name: "index_pi_los_on_pi_id"
+  end
+
+  create_table "pis", force: :cascade do |t|
+    t.string "content"
+    t.integer "so_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["so_id"], name: "index_pis_on_so_id"
+  end
+
   create_table "score_boards", force: :cascade do |t|
     t.integer "student_id"
     t.integer "score"
@@ -88,12 +115,29 @@ ActiveRecord::Schema.define(version: 2022_04_01_041119) do
     t.datetime "updated_at", null: false
     t.integer "subject_id"
     t.string "semester"
+    t.integer "semester_id"
+    t.index ["semester_id"], name: "index_section_classes_on_semester_id"
     t.index ["subject_id"], name: "index_section_classes_on_subject_id"
   end
 
   create_table "section_classes_users", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "section_class_id", null: false
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sos", force: :cascade do |t|
+    t.string "name"
+    t.string "content"
+    t.integer "semester_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["semester_id"], name: "index_sos_on_semester_id"
   end
 
   create_table "student_classes", force: :cascade do |t|

@@ -147,6 +147,12 @@ Rails.application.routes.draw do
       resources :permissions
       resources :student_class
     end
+    resources :so do
+      resources :pi do
+        resources :pi_lo do
+        end
+      end
+    end
   end
   namespace 'lecturer' do
     root 'home#index'

@@ -1,9 +1,13 @@
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+  });
+</script>
 <div class="field form-group mt-2">
   <label><%=I18n.t(label)%><span class="text-danger">*</span></label><br/>
-  <select name="<%= name %>" class="form-select">
-    <option value="0"><%=I18n.t('select_required')%></option>
+  <select name="<%= name %>" class="form-select js-example-basic-single">
     <% list.each do |data| %>
-      <option value="<%= data.id %>" ><%=data.name%></option>
+      <option value="<%= data[:id] %>" ><%=data[:name]%></option>
     <% end %>
   </select>
 </div>

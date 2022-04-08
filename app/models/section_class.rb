@@ -2,16 +2,18 @@
 #
 # Table name: section_classes
 #
-#  id         :integer          not null, primary key
-#  code       :string
-#  semester   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  subject_id :integer
+#  id          :integer          not null, primary key
+#  code        :string
+#  semester    :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  semester_id :integer
+#  subject_id  :integer
 #
 # Indexes
 #
-#  index_section_classes_on_subject_id  (subject_id)
+#  index_section_classes_on_semester_id  (semester_id)
+#  index_section_classes_on_subject_id   (subject_id)
 #
 class SectionClass < ApplicationRecord
   has_and_belongs_to_many :users

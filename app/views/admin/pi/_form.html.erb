@@ -1,0 +1,21 @@
+<form action="/admin/so/<%=@so.id%>/pi" accept-charset="UTF-8" method="post">
+    <%=
+      render 'layouts/input/error',
+      data: @pi
+    %>
+    <%=
+      render 'layouts/input/text',
+      name: 'name',
+      label: 'name',
+      required: true
+    %>
+
+    <%=
+      render 'layouts/input/textarea',
+      name: 'content',
+      label: 'content',
+      required: true
+    %>
+    
+    <%= render 'layouts/input/action' %>
+  </form>

@@ -1,0 +1,18 @@
+<div class="p-5">
+  <h3><%= @so.name %> > <%= @pi.id%></h3>
+  <hr/>
+  <h4><%= I18n.t('basic_info') %></h4>
+  <div class="px-5">
+    <h5><%= I18n.t('content') %>:</h5>
+    <p class='px-3'><%= @pi.content %></p>
+  </div>
+  <hr/>
+  <a href='/admin/so/<%=@so.id%>/pi/<%=@pi.id%>/pi_lo/new'><button class='btn btn-outline-success'>+</button></a>
+  <%=
+    render 'layouts/table',
+    data: @pi_lo,
+    columns: ['id', 'subject_name', 'lo_name', 'priority'],
+    action: ['show', 'delete'],
+    link: "admin/so/#{@so.id}/pi/#{@pi.id}/pi_lo"
+  %>
+</div>

@@ -20,7 +20,55 @@
       label: 'title',
       required: true
     %>
-    
+
+    <div class="field form-group mt-2">
+      <label><%=I18n.t('abet_level.score_type.des')%><span class="text-danger">*</span></label><br/>
+      <select name="<%= 'score_type' %>" class="form-select">
+        <option value="TB" >TB</option>
+        <% ScoreType.where(subject_id: @subject.id).each do |data| %>
+          <option value="<%= data.name %>" ><%=data.name%></option>
+        <% end %>
+        
+      </select>
+    </div>
+
+    <%=
+      render 'layouts/input/number',
+      name: 'd_c',
+      label: 'abet_level.d_c'
+    %>
+
+    <%=
+      render 'layouts/input/textarea',
+      name: 'd_content',
+      label: 'd_content'
+    %>
+    <%=
+      render 'layouts/input/number',
+      name: 'c_b',
+      label: 'abet_level.c_b'
+    %>
+    <%=
+      render 'layouts/input/textarea',
+      name: 'c_content',
+      label: 'c_content'
+    %>
+    <%=
+      render 'layouts/input/number',
+      name: 'b_a',
+      label: 'abet_level.b_a'
+    %>
+    <%=
+      render 'layouts/input/textarea',
+      name: 'b_content',
+      label: 'b_content'
+    %>
+    <label><%=I18n.t('abet_level.a')%></label><br/>
+    <%=
+      render 'layouts/input/textarea',
+      name: 'a_content',
+      label: 'a_content'
+    %>
     <%= render 'layouts/input/action' %>
   </form>
 </div>

@@ -1,0 +1,29 @@
+<form action="/admin/so" accept-charset="UTF-8" method="post">
+    <%=
+      render 'layouts/input/error',
+      data: @so
+    %>
+    <%=
+      render 'layouts/input/text',
+      name: 'name',
+      label: 'name',
+      required: true
+    %>
+
+    <%=
+      render 'layouts/input/select',
+      name: 'semester',
+      label: 'semester',
+      list: Semester.all,
+      required: true
+    %>
+
+    <%=
+      render 'layouts/input/textarea',
+      name: 'content',
+      label: 'content',
+      required: true
+    %>
+    
+    <%= render 'layouts/input/action' %>
+  </form>
