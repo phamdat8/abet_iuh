@@ -1,19 +1,23 @@
-<div class="left p-3 m-3 bg-white rounded" style='margin-right: 0px !important'>
-  <h2><%= I18n.t('manager') %></h2>
-  <ul>
-    <% if current_user.role == 'admin' %>
-      <li><a href='/admin/users'><%= I18n.t('user.users')%></a></li>
-      <li><a href='/admin/subjects'><%= I18n.t('subjects')%></a></li>
-      <li><a href='/admin/original_classes'><%= I18n.t('original_classes')%></a></li>
-      <li><a href='/admin/students'><%= I18n.t('students')%></a></li>
-      <li><a href='/admin/section_classes'><%= I18n.t('section_classes')%></a></li>
-      <li><a href='/admin/so'>SO</a></li>
-    <% elsif current_user.role == 'lecturer' %>
-      <li><a href='/lecturer/students'><%= I18n.t('students')%></a></li>
-      <li><a href='/lecturer/subjects'><%= I18n.t('subjects')%></a></li>
-      <li><a href='/lecturer/section_classes'><%= I18n.t('section_classes')%></a></li>
-    <% else %>
-    <% end %>
-    
-  </ul>
+<div class="left m-3 bg-white rounded" style='margin-right: 0px !important'>
+  <nav id="sidebar">
+    <ul class="list-unstyled components">
+        <h3 class='text-center'><%= I18n.t('manager') %></h3>
+        <% if current_user.role == 'admin' %>
+          <li><a href='/admin/users'> <%= I18n.t('user.users')%></a></li>
+          <li><a href='/admin/subjects'> <%= I18n.t('subjects')%></a></li>
+          <li><a href='/admin/original_classes'> <%= I18n.t('original_classes')%></a></li>
+          <li><a href='/admin/students'> <%= I18n.t('students')%></a></li>
+          <li><a href='/admin/section_classes'> <%= I18n.t('section_classes')%></a></li>
+          <li><a href='/admin/so'> SO</a></li>
+        <% elsif current_user.role == 'lecturer' %>
+          <li><a href='/lecturer/students'><%= I18n.t('students')%></a></li>
+          <li><a href='/lecturer/subjects'><%= I18n.t('subjects')%></a></li>
+          <li><a href='/lecturer/section_classes'><%= I18n.t('section_classes')%></a></li>
+        <% else %>
+        <% end %>
+        <h3 class='text-center'><%= I18n.t('personal') %></h3>
+      <li><a href='/new_password'><%= I18n.t('change_pass')%></a></li>
+    </ul>
+  </nav>
 </div>
+

@@ -10,38 +10,12 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
   end
 
   def show
-    @data = {}
-    @data['A'] = 0
-    @data['B'] = 0
-    @data['C'] = 0
-    @data['D'] = 0
-    @data['N/A'] = 0
     @class = SectionClass.find(params[:id])
     @scores = ScoreBoard.where(section_class_id: params[:id])
     @score_types = ScoreType.where(subject_id: @class.subject_id).pluck(:name) << 'TB'
     student_ids = StudentClass.where(section_class_id: params[:id]).pluck(:student_id)
     @subject = Subject.find(@class.subject_id)
     @students = Student.where(id: student_ids)
-    @students.each do | student |
-      score = student.get_score(@subject.id, @subject.abet_score_type)
-      if score == 'N/A'
-        @data['N/A'] += 1
-      elsif score > @subject.b_a.to_i
-        @data['A'] += 1
-      elsif score > @subject.c_b.to_i
-        @data['B'] += 1
-      elsif score > @subject.d_c.to_i
-        @data['C'] += 1
-      else
-        @data['D'] += 1
-      end
-    end
-    @pie_data = {}
-    @pie_data['A'] =  @data['A']*100 / @students.count
-    @pie_data['B'] =  @data['B']*100 / @students.count
-    @pie_data['C'] =  @data['C']*100 / @students.count
-    @pie_data['D'] =  @data['D']*100 / @students.count
-    @pie_data['N/A'] =@data['N/A']*100 / @students.count
     
   end
 
@@ -56,6 +30,18 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
     @class = SectionClass.find(params[:section_class_id])
     @class.export
     send_file("#{Rails.root}/storage/export/section_class_#{@class.id}.xlsx")
+  end
+
+  def update_score
+    @section_class = SectionClass.find(params[:class_id])
+    score_type = ScoreType.find_by(subject_id: params[:subject_id], name: params[:name])
+    a = ScoreBoard.find_by(score_type_id: score_type.id, student_id: params[:student_id])
+    if a.nil?
+      ScoreBoard.create(score_type_id: score_type.id, student_id: params[:student_id], score: params[:score])
+    else
+      a.update(score: params[:score])
+    end
+    redirect_to lecturer_section_class_url(@section_class)
   end
 
   def update

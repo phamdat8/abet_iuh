@@ -129,6 +129,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#index'
   get '/test', to: 'homes#test'
+  get '/new_password', to: 'homes#new_pass'
+  post '/new_password', to: 'homes#change_pass'
   namespace :admin do
     root 'home#index'
     resources :users
@@ -164,5 +166,6 @@ Rails.application.routes.draw do
       resources :score_boards do
       end
     end
+    get 'update_score', to: 'section_classes#update_score'
   end
 end

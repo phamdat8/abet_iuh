@@ -15,4 +15,9 @@
     action: ['show', 'delete'],
     link: "admin/so/#{@so.id}/pi/#{@pi.id}/pi_lo"
   %>
+
+  <%= column_chart  @data, colors: ["red", "yellow", 'blue', 'green']  %>
+  <p class='text-center'><%= I18n.t('chart.abet') %></p>
+
 </div>
+

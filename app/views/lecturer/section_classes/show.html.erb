@@ -13,7 +13,6 @@
           <% @score_types.each do |type| %>
           <th scope="col"><%= type %></th>
           <% end %>
-          <th scope="col">ABET Type</th>
       </tr>
     </thead>
     <tbody>
@@ -22,22 +21,22 @@
             <td><%=student.name%></td>
             <td><%=student.code%></td>
             <% @score_types.each do |type| %>
-            <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+              <%if type != 'TB'%>
+                <td><form action='/lecturer/update_score'>
+                  <input type='hidden' name='name' value='<%=  type %>'>
+                  <input type='hidden' name='student_id' value='<%=  student.id %>'>
+                  <input type='hidden' name='class_id' value='<%=  @class.id %>'>
+                   <input type='hidden' name='subject_id' value='<%=  @class.subject_id %>'>
+                  <input type='number' name='score' class='input-score' value='<%= student.get_score(@class.subject_id, type) %>' min=0 max=10 step=0.01>
+                </form></td>
+              <%else%>
+                <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+              <%end%>
+              
             <% end %>
-            <td><%= student.abet_type(Subject.find(@class.subject_id)) %></td>
           </tr>
         <% end %>
     </tbody>
   </table>
   <hr/>
-  <div class='row'>
-    <div class='col-6 text-center'>
-      <%= pie_chart(@pie_data, colors: ["green", "blue", "yellow", "red", "gray"], suffix: "%") %>
-      <h4><%= I18n.t('chart.percent') %></h4>
-    </div>
-    <div class='col-6 text-center'>
-      <%= column_chart(@data) %>
-      <h4><%= I18n.t('chart.abet') %></h4>
-    </div>
-  </div>
 </div>

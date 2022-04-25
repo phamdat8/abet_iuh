@@ -105,3 +105,9 @@ en:
   subject_name: 'Subject'
   lo_name: 'LO name'
   priority: 'Priority'
+  email: Email
+  personal: 'Personal'
+  change_pass: Change Password
+  new_pass: New Password
+  old_pass: Old Password
+  confirm_pass: Password Confirmation

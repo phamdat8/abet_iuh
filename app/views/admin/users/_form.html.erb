@@ -34,6 +34,7 @@
     <label><%=I18n.t('role')%><span class="text-danger">*</span></label><br/>
     <select name="user[role]" id="user_role" class="form-select">
       <option value="lecturer">Lecturer</option>
+      <option value="manage">Manage</option>
       <option value="admin" <%= 'selected' if user.admin?%>>Admin</option>
     </select>
   </div>

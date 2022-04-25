@@ -104,3 +104,8 @@ vi:
   chart:
     abet: 'Biểu đồ loại ABET(số lượng)'
     percent: 'Biểu đồ loại ABET(%)'
+  personal: 'Cá nhân'
+  change_pass: 'Đổi mật khẩu'
+  old_pass: 'Mật khẩu cũ'
+  new_pass: 'Mật khẩu mới'
+  confirm_pass: 'Xác nhận mật khẩu'

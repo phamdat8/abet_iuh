@@ -1,0 +1,28 @@
+<div class="p-5">
+  <h3><%= I18n.t('new_pass') %></h3>
+  <hr/>
+
+  <form accept-charset="UTF-8" method="post">
+    <%=
+      render 'layouts/input/text',
+      name: 'old_pass',
+      label: 'old_pass',
+      required: true
+    %>
+
+    <%=
+      render 'layouts/input/text',
+      name: 'new_pass',
+      label: 'new_pass',
+      required: true
+    %>
+    <%=
+      render 'layouts/input/text',
+      name: 'confirm_pass',
+      label: 'confirm_pass',
+      required: true
+    %>
+    
+    <%= render 'layouts/input/action' %>
+  </form>
+</div>

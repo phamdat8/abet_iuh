@@ -7,7 +7,11 @@
   <label><%=I18n.t(label)%><span class="text-danger">*</span></label><br/>
   <select name="<%= name %>" class="form-select js-example-basic-single">
     <% list.each do |data| %>
-      <option value="<%= data[:id] %>" ><%=data[:name]%></option>
+      <% if data.class == Hash %>
+        <option value="<%= data[:id] %>" ><%=data[:name]%></option>
+      <% else %>
+        <option value="<%= data[:id] %>" ><%=data.send('name')%></option>
+      <% end %>
     <% end %>
   </select>
 </div>

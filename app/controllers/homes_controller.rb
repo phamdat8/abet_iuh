@@ -10,4 +10,20 @@ class HomesController < ApplicationController
 
   def test
   end
+
+  def new_pass
+  end
+
+  def change_pass
+    if params[:confirm_pass] != params[:new_pass] || !current_user.valid_password?(params[:old_pass]) || params[:new_pass].length < 6
+      flash.alert = I18n.t('password_not_match')
+      return render 'new_pass'
+    else
+      current_user.password = params[:new_pass]
+      current_user.password_confirmation = params[:new_pass]
+      current_user.save
+      flash.alert = I18n.t('password_changed')
+      return render 'new_pass'
+    end
+  end
 end
