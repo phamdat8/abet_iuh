@@ -54,9 +54,6 @@ input::-webkit-inner-spin-button {
 ul {
   list-style-type: none;
 }
-/* a:hover{
-  font-weight: bold;
-} */
 
 .wrapper {
   display: flex;

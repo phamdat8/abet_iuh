@@ -14,6 +14,14 @@ class HomesController < ApplicationController
   def test
   end
 
+  def rake
+    So.all.each do |so|
+      Pi.where(so_id: so.id).each_with_index do |pi, index|
+        pi.update(name: "PI#{(index+1).to_s}")
+      end
+    end
+  end
+
   def measurement_plan
     @subjects = Subject.all
     @so = So.all

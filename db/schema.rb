@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_08_074615) do
+ActiveRecord::Schema.define(version: 2022_05_08_185054) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_074615) do
     t.integer "so_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["so_id"], name: "index_pis_on_so_id"
   end
 

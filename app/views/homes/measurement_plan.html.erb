@@ -1,4 +1,12 @@
-<div class='p-5'>
+<script>
+  $(document).ready(function () {
+  $('#dtHorizontalExample').DataTable({
+    "scrollX": true
+  });
+  $('.dataTables_length').addClass('bs-select');
+});
+</script>
+<div class='p-5' style='overflow: scroll'>
   <h3><%= I18n.t('measurement_plan') %></h3>
   <hr/>
   <%
@@ -8,7 +16,7 @@
 
   %>
   <table class="table table-bordered caption-top">
-    <thead>
+    <thead >
       <tr>
         <th scope="col" class='py-5' rowspan='3'><%= I18n.t('subject.name')%></th>
         <% soes.each do |so| %>
@@ -20,7 +28,7 @@
         <% soes.each do |so| %>
           <% pies = Pi.where(so_id: so.id) %>
           <% pies.each do |pi| %>
-            <th scope="col" colspan='<%= pi.count_lo%>'><%= pi.content %></th>
+            <th scope="col" colspan='<%= pi.count_lo%>'><%= pi.name %></th>
           <% end %>
         <% end %>
       </tr>

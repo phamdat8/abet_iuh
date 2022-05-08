@@ -111,3 +111,8 @@ vi:
   confirm_pass: 'Xác nhận mật khẩu'
   quantity: 'Số lượng'
   measurement_plan: Kế hoạch đo
+  semester_name: 'Học kỳ'
+  content: 'Nội dung'
+  subject_name: 'Tên môn học'
+  lo_name: 'Tên LO'
+  priority: 'Mức độ'

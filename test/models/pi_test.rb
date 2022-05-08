@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  content    :string
+#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  so_id      :integer

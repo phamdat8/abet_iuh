@@ -129,6 +129,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#index'
   get '/test', to: 'homes#test'
+  get '/rake', to: 'homes#rake'
   get '/new_password', to: 'homes#new_pass'
   post '/new_password', to: 'homes#change_pass'
   get '/measurement_plan', to: 'homes#measurement_plan'
