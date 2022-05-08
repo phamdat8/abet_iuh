@@ -56,6 +56,7 @@ en:
   importance: 'Impotance'
   section_class:
     code: Code
+    destoyed: Section Class destroyed
   select_required: Required
   scores: Score
   permissions: Permission
@@ -111,3 +112,5 @@ en:
   new_pass: New Password
   old_pass: Old Password
   confirm_pass: Password Confirmation
+  quantity: Quantity
+  measurement_plan: Measurement Plan

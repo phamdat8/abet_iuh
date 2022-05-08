@@ -21,22 +21,63 @@
             <td><%=student.name%></td>
             <td><%=student.code%></td>
             <% @score_types.each do |type| %>
-              <%if type != 'TB'%>
+              <%if type == 'TB'%>
+                <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+              <%elsif type.split('-')[1].to_i.positive? %>
+                <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
+              <%else%>
                 <td><form action='/lecturer/update_score'>
                   <input type='hidden' name='name' value='<%=  type %>'>
                   <input type='hidden' name='student_id' value='<%=  student.id %>'>
                   <input type='hidden' name='class_id' value='<%=  @class.id %>'>
-                   <input type='hidden' name='subject_id' value='<%=  @class.subject_id %>'>
+                  <input type='hidden' name='subject_id' value='<%=  @class.subject_id %>'>
                   <input type='number' name='score' class='input-score' value='<%= student.get_score(@class.subject_id, type) %>' min=0 max=10 step=0.01>
                 </form></td>
-              <%else%>
-                <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
               <%end%>
-              
             <% end %>
           </tr>
         <% end %>
     </tbody>
   </table>
   <hr/>
+    
+    
+  <% @lo_data.each do |lo| %>
+    <h4><%= lo['name'] %></h4>
+      <div class='row'>
+        <div class='col-6'>
+          <table class="table caption-top">
+            <thead>
+              <tr>
+                <th scope="col"><%= I18n.t('types')%></th>
+                <th scope="col"><%= I18n.t('quantity')%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A</td>
+                <td><%= lo['A'] %></td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td><%= lo['B'] %></td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td><%= lo['C'] %></td>
+              </tr>
+              <tr>
+                <td>D</td>
+                <td><%= lo['D'] %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class='col-6'>
+          <%= column_chart(lo.slice('A', 'B', 'C', 'D'), colors: ["green", "blue", "yellow", "red"])%>
+        </div>
+      </div>
+      
+    <hr/>
+  <% end %>
 </div>

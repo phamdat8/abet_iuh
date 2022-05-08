@@ -2,13 +2,21 @@ class HomesController < ApplicationController
   before_action :authenticate_user!, except: [:test]
   def index
     if current_user.admin?
-      redirect_to admin_root_url
-    else
+      redirect_to admin_users_url
+    elsif current_user.lecturer? 
       redirect_to lecturer_root_url
-    end 
+    else
+      redirect_to manage_root_url
+    end
+
   end
 
   def test
+  end
+
+  def measurement_plan
+    @subjects = Subject.all
+    @so = So.all
   end
 
   def new_pass

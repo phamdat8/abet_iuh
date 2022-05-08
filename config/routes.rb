@@ -131,6 +131,7 @@ Rails.application.routes.draw do
   get '/test', to: 'homes#test'
   get '/new_password', to: 'homes#new_pass'
   post '/new_password', to: 'homes#change_pass'
+  get '/measurement_plan', to: 'homes#measurement_plan'
   namespace :admin do
     root 'home#index'
     resources :users
@@ -167,5 +168,10 @@ Rails.application.routes.draw do
       end
     end
     get 'update_score', to: 'section_classes#update_score'
+  end
+
+  namespace 'manage' do
+    root 'so#index'
+    resources :so
   end
 end

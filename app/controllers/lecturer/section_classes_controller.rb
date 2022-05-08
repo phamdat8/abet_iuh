@@ -11,12 +11,31 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
 
   def show
     @class = SectionClass.find(params[:id])
+    list = []
+    @loes = LearningOutcome.where(subject_id: @class.subject_id)
+    @loes.each do |i|
+      list << "#{i.name}-#{i.id}"
+    end
     @scores = ScoreBoard.where(section_class_id: params[:id])
     @score_types = ScoreType.where(subject_id: @class.subject_id).pluck(:name) << 'TB'
+    @score_types += list
     student_ids = StudentClass.where(section_class_id: params[:id]).pluck(:student_id)
     @subject = Subject.find(@class.subject_id)
     @students = Student.where(id: student_ids)
-    
+    @lo_data = []
+    @loes.each do |lo|
+      data = {}
+      data["name"] = lo.name
+      data['A'] = 0
+      data['B'] = 0
+      data['C'] = 0
+      data['D'] = 0
+      @students.each do |student|
+        type = student.get_score(@class.subject_id, "#{lo.name}-#{lo.id}")
+        data[type.to_s] += 1
+      end
+      @lo_data << data
+    end 
   end
 
   def create

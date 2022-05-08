@@ -19,6 +19,15 @@ class So < ApplicationRecord
     Semester.find(semester_id).name
   end
 
+  def count_lo
+    count = 0
+    Pi.where(so_id: id).each do |pi|
+      count += pi.count_lo
+    end
+
+    count
+  end
+
   def clear_data
     Pi.where(so_id: id).destroy_all
   end

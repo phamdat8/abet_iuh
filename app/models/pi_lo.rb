@@ -26,4 +26,9 @@ class PiLo < ApplicationRecord
   def lo_name
     learning_outcome.name
   end
+
+  def get_priority(subject)
+    return '' if subject.id != learning_outcome.subject_id
+    return priority
+  end
 end

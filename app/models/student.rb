@@ -44,6 +44,7 @@ class Student < ApplicationRecord
 
   def get_score(subject_id, name)
     begin
+      subject = Subject.find(subject_id)
       if name == 'TB'
         sum = 0
         sum_imp = 0
@@ -52,7 +53,9 @@ class Student < ApplicationRecord
           sum_imp += type.importance
           sum += ScoreBoard.find_by(score_type_id: type.id, student_id: id).score * type.importance
         end
-        sum/sum_imp
+        sum / sum_imp
+      elsif name.split('-')[1].to_i.positive?
+        abet_type(subject)
       else
         score_type = ScoreType.where(subject_id: subject_id, name: name).first
         ScoreBoard.where(score_type_id: score_type.id, student_id: id).first.score

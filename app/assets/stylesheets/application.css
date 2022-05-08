@@ -54,9 +54,9 @@ input::-webkit-inner-spin-button {
 ul {
   list-style-type: none;
 }
-a:hover{
+/* a:hover{
   font-weight: bold;
-}
+} */
 
 .wrapper {
   display: flex;
@@ -65,8 +65,8 @@ a:hover{
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 300px;
+  width: 300px;
+  /* min-width: 250px; */
   background: #0d6efd;
   color: #fff;
   transition: all 0.3s;
@@ -141,10 +141,4 @@ ul.CTAs a {
 a.download {
   background: #fff;
   color: #0d6efd;
-}
-
-a.article,
-a.article:hover {
-  background: #0d6efd !important;
-  color: #fff !important;
 }

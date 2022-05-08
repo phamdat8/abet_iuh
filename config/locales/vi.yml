@@ -109,3 +109,5 @@ vi:
   old_pass: 'Mật khẩu cũ'
   new_pass: 'Mật khẩu mới'
   confirm_pass: 'Xác nhận mật khẩu'
+  quantity: 'Số lượng'
+  measurement_plan: Kế hoạch đo

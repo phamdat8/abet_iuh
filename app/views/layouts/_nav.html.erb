@@ -1,4 +1,4 @@
-<div class="left m-3 bg-white rounded" style='margin-right: 0px !important'>
+<div class="left m-3 bg-white rounded">
   <nav id="sidebar">
     <ul class="list-unstyled components">
         <h3 class='text-center'><%= I18n.t('manager') %></h3>
@@ -9,11 +9,15 @@
           <li><a href='/admin/students'> <%= I18n.t('students')%></a></li>
           <li><a href='/admin/section_classes'> <%= I18n.t('section_classes')%></a></li>
           <li><a href='/admin/so'> SO</a></li>
+          <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% elsif current_user.role == 'lecturer' %>
           <li><a href='/lecturer/students'><%= I18n.t('students')%></a></li>
           <li><a href='/lecturer/subjects'><%= I18n.t('subjects')%></a></li>
           <li><a href='/lecturer/section_classes'><%= I18n.t('section_classes')%></a></li>
+          <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% else %>
+          <li><a href='/admin/so'> SO</a></li>
+          <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% end %>
         <h3 class='text-center'><%= I18n.t('personal') %></h3>
       <li><a href='/new_password'><%= I18n.t('change_pass')%></a></li>

@@ -14,4 +14,11 @@
 #
 class Pi < ApplicationRecord
   belongs_to :so
+
+  def count_lo
+    count = PiLo.where(pi_id: id).count
+    return 1 if count.zero?
+
+    count
+  end
 end

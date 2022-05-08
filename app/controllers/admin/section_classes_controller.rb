@@ -15,13 +15,20 @@ class Admin::SectionClassesController < Admin::HomeController
 
   def create
     SectionClass.create(section_class_params)
-    flash.alert = I18n.t('student.created')
+    flash.alert = I18n.t('section_class.created')
     @section_classes = SectionClass.all
     render :index
   end
 
   def update
     SectionClass.create(section_class_params)
+  end
+
+  def destroy
+    SectionClass.find(params[:id]).destroy
+    flash.alert = I18n.t('section_class.destroyed')
+    @section_classes = SectionClass.all
+    render :index
   end
 
   private

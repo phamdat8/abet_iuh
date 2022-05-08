@@ -1,0 +1,56 @@
+<div class='p-5'>
+  <h3><%= I18n.t('measurement_plan') %></h3>
+  <hr/>
+  <%
+  soes = So.all
+
+
+
+  %>
+  <table class="table table-bordered caption-top">
+    <thead>
+      <tr>
+        <th scope="col" class='py-5' rowspan='3'><%= I18n.t('subject.name')%></th>
+        <% soes.each do |so| %>
+          <th scope="col" colspan='<%= so.count_lo%>'><%= so.name %></th>
+        <% end %>
+      </tr>
+      <tr>
+        <%# subject_name %>
+        <% soes.each do |so| %>
+          <% pies = Pi.where(so_id: so.id) %>
+          <% pies.each do |pi| %>
+            <th scope="col" colspan='<%= pi.count_lo%>'><%= pi.content %></th>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <% soes.each do |so| %>
+          <% pies = Pi.where(so_id: so.id) %>
+          <% pies.each do |pi| %>
+            <% @pi_loes = PiLo.where(pi_id: pi.id) %>
+            <% @pi_loes.each do |pi_lo| %>
+              <th score="col"><%= LearningOutcome.find(pi_lo.learning_outcome_id).name %></th>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.name %></td>
+        <% soes.each do |so| %>
+          <% pies = Pi.where(so_id: so.id) %>
+          <% pies.each do |pi| %>
+            <% @pi_loes = PiLo.where(pi_id: pi.id) %>
+            <% @pi_loes.each do |pi_lo| %>
+              <td score="col"><%= pi_lo.get_priority(subject) %></td>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
