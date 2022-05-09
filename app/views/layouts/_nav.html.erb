@@ -11,11 +11,13 @@
           <li><a href='/admin/so'> SO</a></li>
           <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% elsif current_user.role == 'lecturer' %>
-          <li><a href='/lecturer/students'><%= I18n.t('students')%></a></li>
           <li><a href='/lecturer/subjects'><%= I18n.t('subjects')%></a></li>
           <li><a href='/lecturer/section_classes'><%= I18n.t('section_classes')%></a></li>
           <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% else %>
+          <li><a href='/admin/students'> <%= I18n.t('students')%></a></li>
+          <li><a href='/admin/subjects'> <%= I18n.t('subjects')%></a></li>
+          <li><a href='/admin/section_classes'> <%= I18n.t('section_classes')%></a></li>
           <li><a href='/admin/so'> SO</a></li>
           <li><a href= '/measurement_plan'><%= I18n.t('measurement_plan') %></a></li>
         <% end %>

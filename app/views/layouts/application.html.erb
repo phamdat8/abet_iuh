@@ -38,15 +38,19 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="row">    
-      <div class="col-2 p-0">
-        <%= render 'layouts/nav' if user_signed_in?%>
-      </div>
-      <div class="col-10 p-0">
-        <div class='m-3 bg-white rounded'>       
-          <%= yield %>
+    <div class="row">
+      <% if user_signed_in? %>
+        <div class="col-2 p-0">
+          <%= render 'layouts/nav'%>
         </div>
-      </div>
+        <div class="col-10 p-0">
+          <div class='m-3 bg-white rounded'>       
+            <%= yield %>
+          </div>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </div>
     <nav id="flash" class="navbar navbar-light fixed-bottom d-flex justify-content-end">
       <% flash.each do |key, value| %>

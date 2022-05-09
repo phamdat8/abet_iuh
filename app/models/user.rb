@@ -32,6 +32,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :code, presence: true
 
+  self.per_page = 15
+
   has_and_belongs_to_many :section_classes
   def admin?
     role == 'admin'

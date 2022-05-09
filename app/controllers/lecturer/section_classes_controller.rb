@@ -35,7 +35,7 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
         data[type.to_s] += 1
       end
       @lo_data << data
-    end 
+    end
   end
 
   def create

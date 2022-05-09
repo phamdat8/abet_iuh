@@ -19,6 +19,10 @@ gem "rubyXL"
 gem 'annotate'
 
 gem "chartkick"
+
+gem 'will_paginate'
+
+gem 'will_paginate-bootstrap4'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

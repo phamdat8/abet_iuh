@@ -27,25 +27,26 @@ class Student < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
-  def abet_type(subject)
-   score = get_score(subject.id, subject.abet_score_type)
+  def abet_type(subject, name)
+    lo = LearningOutcome.find_by(subject_id: subject.id, name: name)
+    score = get_score(subject.id, lo.abet_score_type)
     if score == 'N/A'
       return 'N/A'
-    elsif score > subject.b_a.to_i
+    elsif score > lo.b_a.to_i
       return 'A'
-    elsif score > subject.c_b.to_i
+    elsif score > lo.c_b.to_i
       return 'B'
-    elsif score > subject.d_c.to_i
+    elsif score > lo.d_c.to_i
       return 'C'
     else
       return 'D'
     end
   end
 
-  def get_score(subject_id, name)
+  def get_score(subject_id, type_name)
     begin
       subject = Subject.find(subject_id)
-      if name == 'TB'
+      if type_name == 'TB'
         sum = 0
         sum_imp = 0
         score_types = ScoreType.where(subject_id: subject_id)
@@ -54,10 +55,10 @@ class Student < ApplicationRecord
           sum += ScoreBoard.find_by(score_type_id: type.id, student_id: id).score * type.importance
         end
         sum / sum_imp
-      elsif name.split('-')[1].to_i.positive?
-        abet_type(subject)
+      elsif type_name.split('-')[1].to_i.positive?
+        abet_type(subject, type_name.split('-')[0])
       else
-        score_type = ScoreType.where(subject_id: subject_id, name: name).first
+        score_type = ScoreType.where(subject_id: subject_id, name: type_name).first
         ScoreBoard.where(score_type_id: score_type.id, student_id: id).first.score
       end
     rescue

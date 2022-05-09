@@ -21,6 +21,7 @@
             <td><%=student.name%></td>
             <td><%=student.code%></td>
             <% @score_types.each do |type| %>
+              
               <%if type == 'TB'%>
                 <td scope="col"><%= student.get_score(@class.subject_id, type) %></td>
               <%elsif type.split('-')[1].to_i.positive? %>

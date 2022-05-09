@@ -9,4 +9,7 @@
       action: ['show', 'edit', 'delete'],
       link: 'admin/users'
   %>
+  <div class="pagination d-flex justify-content-center">
+    <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
 </div>
