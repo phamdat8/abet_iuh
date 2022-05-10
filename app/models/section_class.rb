@@ -49,8 +49,10 @@ class SectionClass < ApplicationRecord
       end
       student_count += 1
     end
+    
+    path = "#{Rails.root}/storage/export/section_class_#{id}.xlsx"
 
-    File.delete("storage/export/section_class_#{id}.xlsx") if File.exist?("storage/export/section_class_#{id}.xlsx")
-    workbook.write("storage/export/section_class_#{id}.xlsx")
+    File.delete(path) if File.exist?(path)
+    workbook.write(path)
   end
 end
