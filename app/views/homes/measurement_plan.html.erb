@@ -15,12 +15,13 @@
 
 
   %>
+  <div class='table-box'>
   <table class="table table-bordered caption-top">
     <thead >
       <tr>
-        <th scope="col" class='py-5' rowspan='3'><%= I18n.t('subject.name')%></th>
+        <th scope="col" class='py-5' style='width: 300px' rowspan='3'><%= I18n.t('subject.name')%></th>
         <% soes.each do |so| %>
-          <th scope="col" colspan='<%= so.count_lo%>'><%= so.name %></th>
+          <th scope="col" style='width: <%= so.count_lo*50 %>px' colspan='<%= so.count_lo%>'><%= so.name %></th>
         <% end %>
       </tr>
       <tr>
@@ -38,7 +39,7 @@
           <% pies.each do |pi| %>
             <% @pi_loes = PiLo.where(pi_id: pi.id) %>
             <% @pi_loes.each do |pi_lo| %>
-              <th score="col"><%= LearningOutcome.find(pi_lo.learning_outcome_id).name %></th>
+              <th score="col" style='padding-left: 10px'><%= LearningOutcome.find(pi_lo.learning_outcome_id).name %></th>
             <% end %>
           <% end %>
         <% end %>
@@ -53,7 +54,7 @@
           <% pies.each do |pi| %>
             <% @pi_loes = PiLo.where(pi_id: pi.id) %>
             <% @pi_loes.each do |pi_lo| %>
-              <td score="col"><%= pi_lo.get_priority(subject) %></td>
+              <td score="col p-0" ><%= pi_lo.get_priority(subject) %></td>
             <% end %>
           <% end %>
         <% end %>
@@ -61,4 +62,5 @@
       <% end %>
     </tbody>
   </table>
+  </div>
 </div>

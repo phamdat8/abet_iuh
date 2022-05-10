@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  code        :string
+#  semester    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  semester_id :integer

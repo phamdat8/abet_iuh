@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_05_08_185054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subject_id"
+    t.string "semester"
     t.integer "semester_id"
     t.index ["semester_id"], name: "index_section_classes_on_semester_id"
     t.index ["subject_id"], name: "index_section_classes_on_subject_id"
