@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_08_185054) do
+ActiveRecord::Schema.define(version: 2022_05_10_095402) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -21,7 +21,34 @@ ActiveRecord::Schema.define(version: 2022_05_08_185054) do
     t.index ["subject_id"], name: "index_abet_levels_on_subject_id"
   end
 
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "admin_subjects", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -115,7 +142,6 @@ ActiveRecord::Schema.define(version: 2022_05_08_185054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subject_id"
-    t.string "semester"
     t.integer "semester_id"
     t.index ["semester_id"], name: "index_section_classes_on_semester_id"
     t.index ["subject_id"], name: "index_section_classes_on_subject_id"

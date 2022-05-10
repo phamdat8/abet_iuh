@@ -133,6 +133,7 @@ Rails.application.routes.draw do
   get '/new_password', to: 'homes#new_pass'
   post '/new_password', to: 'homes#change_pass'
   get '/measurement_plan', to: 'homes#measurement_plan'
+  resources :documents
   namespace :admin do
     root 'home#index'
     resources :users

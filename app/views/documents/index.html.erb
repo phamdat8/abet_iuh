@@ -1,0 +1,29 @@
+<div class='p-5'>
+  <h3><%= I18n.t('documents') %> > <%= I18n.t('list') %></h3>
+  <hr/>
+  <a href='/documents/new'><button class='btn btn-outline-success'>+</button></a>
+  <%= render 'layouts/input/search' %>
+  <table class="table caption-top">
+    <thead>
+      <tr>
+        <th scope="col"><%= I18n.t("file_name") %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @docs.each do |doc| %>
+        <tr>
+          <td><%= doc.name %></td>
+          <td class="d-flex justify-content-end">
+            <a href='<%= rails_blob_path(doc.file, disposition: `attachment`)%>'><i class="fa-solid fa-download"></i></a>
+            <a href='<%="/documents/#{doc.id}"%>' data-method="DELETE" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i class="mx-1 fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="pagination d-flex justify-content-center">
+    <%= will_paginate @docs, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>

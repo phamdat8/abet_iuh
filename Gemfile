@@ -23,6 +23,8 @@ gem "chartkick"
 gem 'will_paginate'
 
 gem 'will_paginate-bootstrap4'
+
+gem 'attach'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

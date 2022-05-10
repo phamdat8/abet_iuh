@@ -114,3 +114,6 @@ en:
   confirm_pass: Password Confirmation
   quantity: Quantity
   measurement_plan: Measurement Plan
+  documents: Document
+  file_name: File name
+  search: Search

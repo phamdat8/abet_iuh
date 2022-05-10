@@ -116,3 +116,6 @@ vi:
   subject_name: 'Tên môn học'
   lo_name: 'Tên LO'
   priority: 'Mức độ'
+  documents: 'Tài liệu'
+  file_name: 'Tên file'
+  search: 'Tìm'
