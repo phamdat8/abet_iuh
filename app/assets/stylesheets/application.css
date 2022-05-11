@@ -159,3 +159,7 @@ a.download {
 .table-box table{
   table-layout: fixed;
 }
+.mess-box{
+  display: inline-block;
+  border-radius: 10px;
+}

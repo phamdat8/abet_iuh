@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_095402) do
+ActiveRecord::Schema.define(version: 2022_05_11_075956) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 2022_05_10_095402) do
     t.index ["learning_outcome_id"], name: "index_lo_types_on_learning_outcome_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "original_classes", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -116,6 +126,14 @@ ActiveRecord::Schema.define(version: 2022_05_10_095402) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.index ["so_id"], name: "index_pis_on_so_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "score_boards", force: :cascade do |t|

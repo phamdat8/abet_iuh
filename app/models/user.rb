@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :code, presence: true
+  has_many :messages
 
   self.per_page = 15
 

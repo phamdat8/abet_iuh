@@ -1,0 +1,11 @@
+<%
+  is_me = is_me || false
+%>
+<div class='row'>
+  <div class='col-9 p-0 <%= 'text-end' if is_me%>'>
+    <h5><%= name if !is_me %></h5>
+    <div class = 'p-3 border border-rounded border-primary mess-box'>
+      <%= content %>
+    </div>
+  </div>
+</div>

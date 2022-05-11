@@ -1,0 +1,70 @@
+<div class='p-5'>
+  <div class='chat-box p-5 border border-primary'>
+    <div id='chat-box'>
+    </div>
+  <div>
+  <hr/>
+  <div class=row>
+      <div class='col-11'>
+        <input type='text' class='form-control' id='current-text' name='search' >
+      </div>
+      <button id='send_button' class='col-1 btn btn-success' onclick='send_mess()'><%=I18n.t('send')%></button>
+    </div>
+</div>
+<script>
+  var mess_id = 0;
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+  load();
+  function send_mess(){
+    text = document.getElementById('current-text').value
+    chat_box = document.getElementById('chat-box')
+    if (text == ''){
+      return;
+    }else{
+      axios.post('/messages', {
+      room_id: '<%= @room.id %>',
+      content: text
+      });
+    }
+  }
+  function load_new_mess(content, name, is_me){
+    text_end = is_me ? 'text-end' : '';
+    name = is_me ?  '' : `<p>${name}</p>`;
+    html = 
+    `
+    <div class='row'>
+      <div class='col-9 p-0 ${text_end}'>
+      ${name}
+      <div class = 'p-3 border border-rounded border-primary mess-box'>
+          ${content}
+        </div>
+      <div>
+    </div>
+    `;
+    chat_box = document.getElementById('chat-box');
+    chat_box.insertAdjacentHTML('beforeend', html);
+    document.getElementById('current-text').value = '';
+    return html;
+  }
+  async function load(){
+    while(true){
+      await axios.get(`/messages?room_id=<%=@room.id%>&mess_id=${mess_id}`).then(function(response){
+        response.data.forEach(parse_data);
+      })
+      await delay(5000);
+    }
+  }
+
+  function parse_data(value, index, array) {
+    mess_id = value.id;
+    current_user_id = '<%= current_user.id %>';
+    content = value.content;
+    user_id = value.user_id;
+    name = value.full_name;
+    load_new_mess(content, name, current_user_id == user_id);
+  }
+
+  
+</script>
+
