@@ -26,6 +26,7 @@ class Admin::PiController < Admin::HomeController
       'B': 0,
       'C': 0,
       'D': 0,
+      'N/A': 0,
     }
 
     pi_los = PiLo.where(pi_id: params[:id], priority: 'H')
@@ -36,7 +37,9 @@ class Admin::PiController < Admin::HomeController
       student_classes.each do |student_class|
         student = Student.find(student_class.student_id)
         score = student.get_score(lo.subject_id, lo.abet_score_type)
-        if score < lo.d_c.to_i
+        if score == 'N/A'
+          @data['N/A'.to_sym] += 1
+        elsif score < lo.d_c.to_i
           @data['D'.to_sym] += 1
         elsif score < lo.c_b.to_i
           @data['C'.to_sym] += 1
