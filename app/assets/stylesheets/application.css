@@ -163,3 +163,30 @@ a.download {
   display: inline-block;
   border-radius: 10px;
 }
+#chat-box{
+}
+.chat-frame{
+  height: 70vh;
+  overflow-y: auto;
+}
+.time{
+  font-size: 13px;
+}
+table > thead{
+  background-color: #5b9bd5;
+}
+.bg-primary{
+  background-color: #5b9bd5 !important;
+}
+#sidebar{
+  background-color: #5b9bd5;
+}
+.page-item.active > .page-link{
+  background-color: #5b9bd5;
+}
+.btn-primary{
+  background-color: #5b9bd5;
+}
+.pri{
+  font-weight: bold;
+}

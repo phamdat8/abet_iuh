@@ -121,3 +121,6 @@ vi:
   search: 'Tìm'
   rooms: 'Tin nhắn'
   send: 'Gửi'
+  members: 'Thành viên'
+  member:
+    add: 'Thêm thành viên'

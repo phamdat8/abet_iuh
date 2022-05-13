@@ -1,21 +1,75 @@
-<div class='p-5'>
-  <div class='chat-box p-5 border border-primary'>
-    <div id='chat-box'>
+<div class='p-5 row'>
+  <div class='chat-box p-2 border border-primary col-9'>
+    <div class='chat-frame', id='chat-frame'>
+      <div id='chat-box'>
+      </div>
+      <div id='bottom-chat'></div>
     </div>
-  <div>
-  <hr/>
-  <div class=row>
-      <div class='col-11'>
+    <hr/>
+    <div class=row>
+      <div class='col-10'>
         <input type='text' class='form-control' id='current-text' name='search' >
       </div>
-      <button id='send_button' class='col-1 btn btn-success' onclick='send_mess()'><%=I18n.t('send')%></button>
+      <div class='col-2'>
+        <button id='send_button' class='btn btn-success' onclick='send_mess()'><%=I18n.t('send')%></button>
+      </div>
     </div>
+  </div>
+
+  <div class='col-3 border border-primary py-4'>
+    <div class='text-center'><h3><%= I18n.t('members') %></h3></div>
+    <% @members.each do |mem| %>
+      <div><%= mem.user.full_name %></div>
+    <% end %>
+    <!-- Button trigger modal -->
+    <%if @owner %>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <%= I18n.t('member.add') %>
+      </button>
+    <% end %>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><%= I18n.t('member.add')%></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form method='post' class='m-4' action='/members'>
+            <input name='room_id' type='hidden' value='<%=@room.id%>'>
+            <%=
+              render 'layouts/input/select',
+              list: User.where(role: ['lecturer', 'manage']).where.not(id: @members.pluck(:id)),
+              name: 'user_id',
+              label: 'members'
+            %>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>
 <script>
   var mess_id = 0;
-  const delay = ms => new Promise(res => setTimeout(res, ms));
 
+  // var myModal = document.getElementById('myModal')
+  // var myInput = document.getElementById('myInput')
+
+  // myModal.addEventListener('shown.bs.modal', function () {
+  //   myInput.focus()
+  // })
+  
   load();
+
+  document.addEventListener("keypress", function(event) {
+    if (event.keyCode == 13) {
+      send_mess();
+    }
+  });
+
   function send_mess(){
     text = document.getElementById('current-text').value
     chat_box = document.getElementById('chat-box')
@@ -27,15 +81,17 @@
       content: text
       });
     }
+    document.getElementById('current-text').value = '';
   }
-  function load_new_mess(content, name, is_me){
+  function load_new_mess(content, name, time, is_me){
     text_end = is_me ? 'text-end' : '';
-    name = is_me ?  '' : `<p>${name}</p>`;
+    name = is_me ?  '' : `<div style='padding-top: 1rem'>${name}</div>`;
     html = 
     `
-    <div class='row'>
-      <div class='col-9 p-0 ${text_end}'>
+    <div>
+      <div class='px-4 ${text_end}'>
       ${name}
+      <div class='time'>${time}</div>
       <div class = 'p-3 border border-rounded border-primary mess-box'>
           ${content}
         </div>
@@ -44,15 +100,23 @@
     `;
     chat_box = document.getElementById('chat-box');
     chat_box.insertAdjacentHTML('beforeend', html);
-    document.getElementById('current-text').value = '';
+    
     return html;
   }
+  
   async function load(){
+    var myDiv = document.getElementById("chat-frame");
+    scroll = true;
     while(true){
       await axios.get(`/messages?room_id=<%=@room.id%>&mess_id=${mess_id}`).then(function(response){
         response.data.forEach(parse_data);
-      })
-      await delay(5000);
+        
+      });
+      if (scroll) {
+        myDiv.scrollTop = myDiv.scrollHeight;
+        scroll = false;
+      }
+      await stop(2000);
     }
   }
 
@@ -62,7 +126,8 @@
     content = value.content;
     user_id = value.user_id;
     name = value.full_name;
-    load_new_mess(content, name, current_user_id == user_id);
+    time = value.time
+    load_new_mess(content, name, time, current_user_id == user_id);
   }
 
   

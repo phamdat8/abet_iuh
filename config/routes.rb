@@ -136,6 +136,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :documents
   resources :rooms
+  resources :members
   namespace :admin do
     root 'home#index'
     resources :users

@@ -14,9 +14,9 @@ class MessagesController < ApplicationController
       new_data['content'] = mes.content
       new_data['full_name'] = mes.user.full_name
       new_data['user_id'] = mes.user_id
+      new_data['time'] = mes.created_at.to_formatted_s(:short)
       data << new_data
     end
-    # byebug
     render :json => data
   end
 end

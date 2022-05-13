@@ -119,3 +119,6 @@ en:
   search: Search
   rooms: Room chat
   send: Send
+  members: Members
+  member:
+    add: Add new user
