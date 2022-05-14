@@ -12,6 +12,12 @@
 #  updated_at      :datetime         not null
 #
 class Subject < ApplicationRecord
-  has_many :score_types
-  has_many :section_classes
+  has_many :score_types, :dependent => :destroy
+  has_many :section_classes, :dependent => :destroy
+  self.per_page = 20
+
+  def self.search(text)
+    return self.all if text.nil?
+    self.where("name LIKE '%#{text}%'")
+  end
 end

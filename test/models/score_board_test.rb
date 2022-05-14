@@ -3,7 +3,7 @@
 # Table name: score_boards
 #
 #  id            :integer          not null, primary key
-#  score         :integer
+#  score         :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  score_type_id :integer

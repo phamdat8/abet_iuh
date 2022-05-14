@@ -21,12 +21,7 @@
 
 var stop = ms => new Promise(res => setTimeout(res, ms));
 
-$(document).ready(function() {
-  $('.js-example-basic-single').select2();
-});
 
 
-$(".js-example-matcher-start").select2({
-  matcher: matchStart
-});
+
 

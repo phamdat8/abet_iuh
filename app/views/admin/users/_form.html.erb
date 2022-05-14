@@ -1,14 +1,5 @@
 <%= form_for ([:admin, user]) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <%= pluralize(user.errors.count, "error") %> prohibited this book from being saved:
-      <ul>
-        <% user.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
 
   <div class="field form-group mt-2">
     <label>Email<span class="text-danger">*</span></label>

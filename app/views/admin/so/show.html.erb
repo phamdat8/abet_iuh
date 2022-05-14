@@ -14,12 +14,16 @@
   </div>
   <hr/>
   <h4><%= I18n.t('pi_list') %></h4>
-  <a href='/admin/so/<%=@so.id%>/pi/new'><button class='btn btn-outline-success'>+</button></a>
+  <% unless current_user.lecturer? %>
+    <a href='/admin/so/<%=@so.id%>/pi/new'><button class='btn btn-outline-success'>+</button></a>
+  <%end%>
   <%=
+    action = ['show']
+    action << 'delete' unless current_user.lecturer?
     render 'layouts/table',
     data: @pi,
     columns: ['id', 'content'],
-    action: ['show', 'delete'],
+    action: action,
     link: "admin/so/#{@so.id}/pi"
   %>
 

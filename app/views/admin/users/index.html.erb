@@ -6,7 +6,7 @@
   <%= render 'layouts/table',
       data: @users,
       columns: ['id', 'full_name', 'email', 'phone', 'role'],
-      action: ['show', 'edit', 'delete'],
+      action: ['edit', 'delete'],
       link: 'admin/users'
   %>
   <div class="pagination d-flex justify-content-center">

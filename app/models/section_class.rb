@@ -22,6 +22,10 @@ class SectionClass < ApplicationRecord
     StudentClass.where(section_class_id: id).count
   end
 
+  def subject_name
+    subject.name
+  end
+
   def export
     score_type =  ScoreType.where(subject_id: subject_id).pluck(:name) << 'TB'
     header = ['CODE', 'Full name'] + score_type

@@ -25,7 +25,7 @@ class Admin::OriginalClassesController < ApplicationController
 
     respond_to do |format|
       if @original_class.save
-        format.html { redirect_to admin_original_class_url(@original_class), notice: "Original class was successfully created." }
+        format.html { redirect_to admin_original_classes_url, notice: "Original class was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

@@ -4,9 +4,9 @@ class HomesController < ApplicationController
     if current_user.admin?
       redirect_to admin_users_url
     elsif current_user.lecturer? 
-      redirect_to lecturer_root_url
+      redirect_to lecturer_subjects_url
     else
-      redirect_to manage_root_url
+      redirect_to admin_subjects_url
     end
 
   end

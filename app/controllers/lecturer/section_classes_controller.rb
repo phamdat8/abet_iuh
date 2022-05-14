@@ -1,8 +1,8 @@
 class Lecturer::SectionClassesController < Lecturer::HomeController
   def index
-
     class_ids = Permission.where(user_id: current_user.id).group(:section_class_id).pluck(:section_class_id)
     @section_classes = SectionClass.where(id: class_ids)
+
   end
 
   def new
@@ -32,7 +32,7 @@ class Lecturer::SectionClassesController < Lecturer::HomeController
       data['D'] = 0
       @students.each do |student|
         type = student.get_score(@class.subject_id, "#{lo.name}-#{lo.id}")
-        data[type.to_s] += 1
+        data[type.to_s] += 1 unless data[type.to_s].nil?
       end
       @lo_data << data
     end

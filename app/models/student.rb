@@ -19,6 +19,12 @@
 #
 class Student < ApplicationRecord
   belongs_to :original_class
+  self.per_page = 20
+
+  def self.search(text)
+    return self.all if text.nil?
+    self.where("first_name LIKE '%#{text}%' OR last_name LIKE '%#{text}%' OR code LIKE '%#{text}%'")
+  end
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -54,7 +60,7 @@ class Student < ApplicationRecord
           sum_imp += type.importance
           sum += ScoreBoard.find_by(score_type_id: type.id, student_id: id).score * type.importance
         end
-        sum / sum_imp
+        (sum / sum_imp).round(2)
       elsif type_name.split('-')[1].to_i.positive?
         abet_type(subject, type_name.split('-')[0])
       else

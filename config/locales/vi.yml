@@ -1,4 +1,11 @@
 vi:
+  devise:
+    failure:
+      user:
+        unauthenticated: 'Đăng xuất thành công'
+    sessions:
+      user:
+        signed_in: 'Login successfully'
   user:
     users: 'Tài khoản'
     created: 'Tạo tài khoản thành công'
@@ -31,7 +38,7 @@ vi:
   english: 'Tiếng Anh'
   role: 'Chức vụ'
   phone: 'Số điện thoại'
-  wrong: 'Có gì đó sai sai'
+  wrong: 'Có lỗi xảy ra'
   show: 'Thông tin'
   original_classes: 'Lớp danh nghĩa'
   original_class:
@@ -124,3 +131,6 @@ vi:
   members: 'Thành viên'
   member:
     add: 'Thêm thành viên'
+  title: 'Nội dung'
+  lo: LO
+  email: Email

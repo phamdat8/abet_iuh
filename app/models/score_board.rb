@@ -3,7 +3,7 @@
 # Table name: score_boards
 #
 #  id            :integer          not null, primary key
-#  score         :integer
+#  score         :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  score_type_id :integer
@@ -20,7 +20,7 @@ class ScoreBoard < ApplicationRecord
   validate :validate
 
   def validate
-    errors[:base] << I18n.t('score_board.score.existed') if ScoreBoard.exists?(student_id: student_id, score_type_id: score_type_id)
+    # errors[:base] << I18n.t('score_board.score.existed') if ScoreBoard.exists?(student_id: student_id, score_type_id: score_type_id)
     errors[:base] << I18n.t('score_board.score.invalid') if score < 0 ||  score > 10
   end
 end

@@ -1,7 +1,9 @@
-<div class='p-5 row'>
+<div class='py-3 px-5 row'>
+  <h3><b><%= @room.name %></b></h3>
   <div class='chat-box p-2 border border-primary col-9'>
     <div class='chat-frame', id='chat-frame'>
       <div id='chat-box'>
+      
       </div>
       <div id='bottom-chat'></div>
     </div>
@@ -38,6 +40,7 @@
           <form method='post' class='m-4' action='/members'>
             <input name='room_id' type='hidden' value='<%=@room.id%>'>
             <%=
+              @members = Member.where(room_id: params[:id])
               render 'layouts/input/select',
               list: User.where(role: ['lecturer', 'manage']).where.not(id: @members.pluck(:id)),
               name: 'user_id',

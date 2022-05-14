@@ -1,4 +1,11 @@
 en:
+  devise:
+    failure:
+      user:
+        unauthenticated: 'Log out successfully'
+    sessions:
+      user:
+        signed_in: 'Login successfully'
   user:
     users: "Users"
     created: 'Create user successfully'

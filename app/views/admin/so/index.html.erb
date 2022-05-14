@@ -1,11 +1,15 @@
 <div class='p-5'>
   <h3> SO - <%= I18n.t('list') %></h3>
   <hr/>
-  <a href='/admin/so/new'><button class='btn btn-outline-success'>+</button></a>
+  <%unless current_user.lecturer?%>
+    <a href='/admin/so/new'><button class='btn btn-outline-success'>+</button></a>
+  <%end%>
   <%=
+    action = ['show']
+    action << 'delete' unless current_user.lecturer?
     render 'layouts/table',
     data: @so,
     columns: ['id', 'name', 'semester_name'],
-    action: ['show', 'delete'],
+    action: action,
     link: 'admin/so'
   %>

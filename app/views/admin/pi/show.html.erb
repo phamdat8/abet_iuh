@@ -9,10 +9,12 @@
   <hr/>
   <a href='/admin/so/<%=@so.id%>/pi/<%=@pi.id%>/pi_lo/new'><button class='btn btn-outline-success'>+</button></a>
   <%=
+    action = []
+    action << 'delete' unless current_user.lecturer?
     render 'layouts/table',
     data: @pi_lo,
     columns: ['id', 'subject_name', 'lo_name', 'priority'],
-    action: ['show', 'delete'],
+    action: action,
     link: "admin/so/#{@so.id}/pi/#{@pi.id}/pi_lo"
   %>
 

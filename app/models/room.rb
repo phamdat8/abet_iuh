@@ -14,5 +14,6 @@
 #
 class Room < ApplicationRecord
   belongs_to :user
-  has_many :messages, dependent: :destroy
+  has_many :messages, dependent: :delete_all
+  has_many :members, dependent: :delete_all
 end

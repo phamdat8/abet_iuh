@@ -3,7 +3,8 @@ class Admin::SubjectsController < ApplicationController
 
   # GET /admin/subjects or /admin/subjects.json
   def index
-    @subjects = Subject.all
+    # @subjects = Subject.all
+    @subjects = Subject.search(params['search']).paginate(:page => params[:page])
   end
 
   # GET /admin/subjects/1 or /admin/subjects/1.json
