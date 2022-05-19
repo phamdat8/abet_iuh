@@ -44,6 +44,7 @@
     
     
   <% @lo_data.each do |lo| %>
+    <% total = lo['A'] + lo['B'] + lo['C'] + lo['D'] %>
     <h4><%= lo['name'] %></h4>
       <div class='row'>
         <div class='col-6'>
@@ -52,24 +53,29 @@
               <tr>
                 <th scope="col"><%= I18n.t('types')%></th>
                 <th scope="col"><%= I18n.t('quantity')%></th>
+                <th scope="col"><%= I18n.t('percent')%></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>A</td>
                 <td><%= lo['A'] %></td>
+                <td><%= lo['A'] * 100 / total %>%</td>
               </tr>
               <tr>
                 <td>B</td>
                 <td><%= lo['B'] %></td>
+                <td><%= lo['B'] * 100 / total %>%</td>
               </tr>
               <tr>
                 <td>C</td>
                 <td><%= lo['C'] %></td>
+                <td><%= lo['C'] * 100 / total %>%</td>
               </tr>
               <tr>
                 <td>D</td>
                 <td><%= lo['D'] %></td>
+                <td><%= lo['D'] * 100 / total %>%</td>
               </tr>
             </tbody>
           </table>

@@ -55,7 +55,7 @@
             <% @pi_loes = PiLo.where(pi_id: pi.id) %>
             <% @pi_loes.each do |pi_lo| %>
               <% value = pi_lo.get_priority(subject) %>
-              <% if value == 'H' %>
+              <% if value == 'E' %>
                 <td score="col p-0" style='background-color: yellow; font-weight: bold; padding-left: 20px' ><b><%= value %></b></td>
               <%else%>
                 <td score="col p-0" style='font-weight: bold' ><b><%= value %></b></td>

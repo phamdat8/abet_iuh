@@ -2,7 +2,9 @@ en:
   devise:
     failure:
       user:
-        unauthenticated: 'Log out successfully'
+        not_found_in_database: 'Username not found'
+        unauthenticated: 'Unauthenticated'
+        invalid: 'User Invalid'
     sessions:
       user:
         signed_in: 'Login successfully'
@@ -129,3 +131,5 @@ en:
   members: Members
   member:
     add: Add new user
+  percent: Percent
+        

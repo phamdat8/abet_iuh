@@ -8,28 +8,46 @@
       <tr>
         <th scope="col"><%= I18n.t('subject_type') %></th>
         <th scope="col"><%= I18n.t('value') %></th>
+        <th scope='col'>Rubrics</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><%= I18n.t('d_type') %></td>
         <td><%= I18n.t('form_to_less', form: '0', to: @lo.d_c) %></td>
+        <td><% @lo.d_content.split(/[\r\n]+/).each do |data| %>
+            <p><%=data%></p>
+          <%end%>
+        </td>
       </tr>
       <tr>
         <td><%= I18n.t('c_type') %></td>
         <td><%= I18n.t('form_to_less', form: @lo.d_c, to: @lo.c_b) %></td>
+        <td><% @lo.c_content.split(/[\r\n]+/).each do |data| %>
+            <p><%=data%></p>
+          <%end%>
+        </td>
       </tr>
       <tr>
         <td><%= I18n.t('b_type') %></td>
         <td><%= I18n.t('form_to_less', form: @lo.c_b, to: @lo.b_a) %></td>
+        <td><% @lo.b_content.split(/[\r\n]+/).each do |data| %>
+            <p><%=data%></p>
+          <%end%>
+        </td>
       </tr>
       <tr>
         <td><%= I18n.t('a_type') %></td>
         <td><%= I18n.t('form_to', form: @lo.b_a, to: '10') %></td>
+        <td><% @lo.a_content.split(/[\r\n]+/).each do |data| %>
+            <p><%=data%></p>
+          <%end%>
+        </td>
       </tr>
       <tr>
         <td><%= I18n.t('abet_score_type') %></td>
         <td><%= @lo.abet_score_type %></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

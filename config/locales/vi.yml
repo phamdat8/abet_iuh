@@ -2,10 +2,12 @@ vi:
   devise:
     failure:
       user:
-        unauthenticated: 'Đăng xuất thành công'
+        not_found_in_database: 'Sai tài khoản hoặc mật khẩu'
+        unauthenticated: 'Bạn đã đăng xuất'
+        invalid: 'Sai tài khoản hoặc mật khẩu'
     sessions:
       user:
-        signed_in: 'Login successfully'
+        signed_in: 'Đăng nhập thành công'
   user:
     users: 'Tài khoản'
     created: 'Tạo tài khoản thành công'
@@ -134,3 +136,4 @@ vi:
   title: 'Nội dung'
   lo: LO
   email: Email
+  percent: 'Tỉ lệ'

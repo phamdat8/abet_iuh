@@ -32,9 +32,9 @@ class Admin::PiLoController < Admin::HomeController
     @pi_lo = ::PiLo.find(params[:id]) if params[:id]
     @pi_lo = @pi_lo || PiLo.new
     @pri_list = [
-      {name: 'H', id: 'H'},
-      {name: 'L', id: 'L'},
-      {name: 'I', id: 'I'}
+      {name: 'I', id: 'I'},
+      {name: 'R', id: 'R'},
+      {name: 'E', id: 'E'}
     ]
   end
 end

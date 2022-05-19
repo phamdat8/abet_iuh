@@ -15,10 +15,11 @@ class HomesController < ApplicationController
   end
 
   def rake
-    So.all.each do |so|
-      Pi.where(so_id: so.id).each_with_index do |pi, index|
-        pi.update(name: "PI#{(index+1).to_s}")
-      end
+    PiLo.all.each do |pilo|
+      pilo.priority = 'E' if pilo.priority == 'H'
+      pilo.priority = 'I' if pilo.priority == 'L'
+      pilo.priority = 'R' if pilo.priority == 'I'
+      pilo.save
     end
   end
 
