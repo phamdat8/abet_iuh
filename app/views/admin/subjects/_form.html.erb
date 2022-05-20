@@ -13,6 +13,21 @@
     <%= form.text_field :name, class:"form-control" %>
   </div>
 
+  <%=
+    render 'layouts/input/select',
+    list: User.where(role: 'lecturer'),
+    name: 'subject[user_id]',
+    label: 'lecturer'
+  %>
+
+  <%=
+    render 'layouts/input/textarea',
+    name: 'subject[content]',
+    label: 'content',
+    required: true
+  %>
+
+
   <div class="actions mt-2">
     <button type="submit" class="btn btn-success">Submit</button>
     <a href="/admin/subjects"><button type="submit" class="btn btn-primary">Back</button></a>

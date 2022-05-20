@@ -68,7 +68,7 @@ vi:
   scores: Điểm
   permissions: Quyền
   id: ID
-  lecturer: Lecturer
+  lecturer: 'Giáo viên'
   types: Type
   type:
     theory: Theory
@@ -137,3 +137,4 @@ vi:
   lo: LO
   email: Email
   percent: 'Tỉ lệ'
+  detail: 'Thông tin'

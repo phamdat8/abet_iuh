@@ -9,6 +9,31 @@
   <hr/>
   <h4><%= I18n.t('score_types') %></h4>
   <a href='/admin/subjects/<%=@subject.id%>/score_types/new'><button class='btn btn-outline-success'>+</button></a>
+
+
+  <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <%= I18n.t('detail') %>
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><%= I18n.t('detail')%></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class='m-3'>
+            <h5><%= "#{I18n.t('lecturer')}: #{@subject.user.full_name}" %></h5>
+            <p><%= @subject.content %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   <table class="table caption-top">
     <thead>
       <tr>

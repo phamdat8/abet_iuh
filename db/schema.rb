@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_14_182324) do
+ActiveRecord::Schema.define(version: 2022_05_20_033202) do
 
   create_table "abet_levels", force: :cascade do |t|
     t.string "type"
@@ -234,6 +234,9 @@ ActiveRecord::Schema.define(version: 2022_05_14_182324) do
     t.string "c_b"
     t.string "b_a"
     t.string "abet_score_type"
+    t.text "content"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
