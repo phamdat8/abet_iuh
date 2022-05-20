@@ -15,12 +15,7 @@ class HomesController < ApplicationController
   end
 
   def rake
-    PiLo.all.each do |pilo|
-      pilo.priority = 'E' if pilo.priority == 'H'
-      pilo.priority = 'I' if pilo.priority == 'L'
-      pilo.priority = 'R' if pilo.priority == 'I'
-      pilo.save
-    end
+    Subject.all.update_all(user_id: User.find_by(role: 'lecturer').id)
   end
 
   def measurement_plan
