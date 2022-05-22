@@ -2,7 +2,30 @@
   <h3><%= I18n.t('documents') %> > <%= I18n.t('list') %></h3>
   <hr/>
   <a href='/documents/new'><button class='btn btn-outline-success'>+</button></a>
-  <%= render 'layouts/input/search' %>
+
+
+  <div class='m-2'>
+    <form method='GET' >
+      <div class=row>
+        <div class='col-3'>
+          <%if current_user.manage? %>
+            <select name='status' class='form-control'>
+              <option value='all' selected><%=I18n.t('all')%></option>
+              <option value='approve'><%=I18n.t('approve')%></option>
+              <option value='wait'><%=I18n.t('wait')%></option>
+            </select>
+          <% end %>
+        </div>
+        <div class='col-8'>
+          <input type='text' class='form-control' name='search' >
+        </div>
+        <button type='submit' class='col-1 btn btn-success'><%=I18n.t('search')%></button>
+      </div>
+    </form>
+  </div>
+
+
+
   <table class="table caption-top">
     <thead>
       <tr>
@@ -15,8 +38,13 @@
         <tr>
           <td><%= doc.name %></td>
           <td class="d-flex justify-content-end">
+            <a href='/documents/view/<%=doc.id%>'><i class="fa-solid fa-eye"></i></a>
+            <%if doc.status != 'approve'%>
+              <a href='/documents/approve/<%=doc.id%>'><i class="fa-solid fa-thumbs-up"></i></a>
+            <%end%>
             <a href='<%= rails_blob_path(doc.file, disposition: `attachment`)%>'><i class="fa-solid fa-download"></i></a>
             <a href='<%="/documents/#{doc.id}"%>' data-method="DELETE" onclick="if (confirm('Delete selected item?')){return true;}else{event.stopPropagation(); event.preventDefault();};"><i class="mx-1 fas fa-trash-alt"></i></a>
+            
           </td>
         </tr>
       <% end %>

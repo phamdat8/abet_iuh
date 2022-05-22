@@ -133,4 +133,6 @@ en:
     add: Add new user
   percent: Percent
   detail: Detail
-        
+  all: All
+  approve: Approved
+  wait: Waiting

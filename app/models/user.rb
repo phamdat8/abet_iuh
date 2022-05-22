@@ -44,6 +44,10 @@ class User < ApplicationRecord
     role == 'lecturer'
   end
 
+  def manage?
+    role == 'manage'
+  end
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

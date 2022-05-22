@@ -138,3 +138,6 @@ vi:
   email: Email
   percent: 'Tỉ lệ'
   detail: 'Thông tin'
+  all: 'Tất cả'
+  approve: 'Đã duyệt'
+  wait: 'Đang chờ duyệt'

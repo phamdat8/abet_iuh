@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %></h1>
+    <p>
+      please approve documents by <%= @current_user.name %><br/>
+      <a href='http://<%=@url%>/documents/view/<%=@doc.id%>'>View</a><br/>
+      <a href='http://<%=@url%>/documents/approve/<%=@doc.id%>'>Approve</a>
+    </p>
+  </body>
+</html>
