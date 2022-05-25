@@ -34,6 +34,11 @@ class DocumentsController < ApplicationController
     redirect_to documents_url
   end
 
+  def destroy
+    Document.find(params['id']).destroy
+    redirect_to documents_url
+  end
+
   def view
     @doc = Document.find(params[:id])
   end
